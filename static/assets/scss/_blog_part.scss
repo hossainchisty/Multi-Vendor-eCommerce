@@ -1,0 +1,168 @@
+/**************** blog part css start ****************/
+.blog_part{
+    @media #{$small_mobile}{
+        padding-bottom: 50px;
+    }
+    @media #{$large_mobile}{
+        padding-bottom: 50px;
+    }
+    @media #{$tab_device}{
+        padding-bottom: 50px;
+    }
+    @media #{$medium_device}{
+        padding-bottom: 50px;
+    }
+    .card{
+        border: 0px solid transparent;
+    }
+    .blog_right_sidebar .widget_title {
+        font-size: 20px;
+        margin-bottom: 40px;
+        font-style: inherit !important; 
+    }
+    .single-home-blog{
+        @media #{$small_mobile}{
+            margin-bottom: 20px;
+        }
+        @media #{$large_mobile}{
+            margin-bottom: 20px;
+        }
+        @media #{$tab_device}{
+            margin-bottom: 20px;
+        }
+        @media #{$medium_device}{
+        
+        }
+        .card-img-top{
+            border-radius: 0px;
+        }
+        .card{
+            
+            border-radius: 0px;
+            background-color: transparent;
+            position: relative;
+            .card-body{
+                padding: 35px 30px 23px;
+                background-color: $white_color;
+                @include transform_time(.5s);
+                border: 1px solid $border_color;
+                &:hover{
+                    box-shadow: 0px 10px 30px 0px rgba(12, 46, 96, 0.1);
+                    border: 1px solid transparent;
+                }
+
+                @media #{$small_mobile}{
+                    padding: 15px 10px;
+                }
+                @media #{$large_mobile}{
+                    padding: 15px;
+                }
+                @media #{$tab_device}{
+                
+                }
+                @media #{$medium_device}{
+                    padding: 20px;
+                }
+                .btn_4{
+                    margin-bottom: 20px;
+
+                }
+                a{
+                    color: $white_color;
+                    text-transform: capitalize;
+                    @include transform_time(0.8s);
+                }
+            }
+            .dot{
+                position: relative;
+                padding-left: 20px;
+                &:after{
+                    position: absolute;
+                    content: "";
+                    width: 10px;
+                    height: 10px;
+                    top: 5px;
+                    left: 0;
+                    background-color: $btn_bg;
+                    border-radius: 50%;
+                }
+            }
+            span{
+                color: $font_4;
+                margin-bottom: 10px;
+                display: inline-block;
+                margin-top: 10px;
+                @media #{$small_mobile}{
+                    margin-bottom: 5px;
+                    margin-top: 5px;
+                }
+                @media #{$large_mobile}{
+                    margin-bottom: 5px;
+                    margin-top: 5px;
+                }
+                @media #{$tab_device}{
+                    margin-bottom: 5px;
+                    margin-top: 5px;
+                }
+                @media #{$medium_device}{
+                    margin-bottom: 5px;
+                    margin-top: 5px;
+                }
+            }
+            h5{
+                font-weight: 600;
+                line-height: 1.5;
+                font-size: 19px;
+                @include transform_time(0.8s);
+                text-transform: capitalize;
+                @media #{$small_mobile}{
+                    margin-bottom: 5px;
+                    font-size: 17px;
+                }
+                @media #{$large_mobile}{
+                    margin-bottom: 10px;
+                    font-size: 16px;
+                }
+                @media #{$tab_device}{
+                    margin-bottom: 10px;
+                }
+                @media #{$medium_device}{
+                    margin-bottom: 10px;
+                    font-size: 18px;
+                }
+                &:hover{
+                    @include transform_time(0.8s);
+                    color: $btn_bg;
+                }
+                
+            }
+            ul{
+                border-top: 1px solid $border_color;
+                padding-top: 20px;
+                margin-top: 24px;
+                li{
+                    display: inline-block;
+                    color: $font_4;
+                    margin-right: 39px;
+                    @media #{$small_mobile}{
+                        margin-right: 10px;
+                    }
+                    @media #{$large_mobile}{
+                        margin-right: 10px;
+                    }
+                    @media #{$tab_device}{
+                        margin-right: 10px;
+                    }
+                    @media #{$medium_device}{
+                        margin-right: 10px;
+                    }
+                    span{
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+  

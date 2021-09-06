@@ -1,0 +1,51 @@
+
+{% extends 'core/_base.html' %}
+{% block title %}My Wishlist {% endblock %}
+{% load static %}
+{% block body %}
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+    <section class="bg-white">
+        <div class="container mx-auto flex items-center flex-wrap pt-4 pb-12">
+            <nav id="store" class="w-full z-30 top-0 px-6 py-1">
+                
+                <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
+                <nav class="breadcrumb is-small bg-white" aria-label="breadcrumbs">
+                    <ul>
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li class="is-active"><a href="#" aria-current="page">Wishlist</a></li>
+                    </ul>
+                </nav>
+                    <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
+				    My Wishlist({{products|length}})
+			        </a>
+                </div>
+            </nav>
+            {% if messages %}
+                {% for message in messages %}
+                <div class="notification is-success is-toast">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {% for product in products %}
+            <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+                <a href="{% url 'product_detail'  product.category.slug product.slug %}">
+                    <img class="hover:grow hover:shadow-lg" src="{{ product.image.url }}">
+                    <div class="pt-3 flex items-center justify-between">
+                        <p class="">{{ product.title }}</p>
+                    </div>
+                    <p class="pt-1 text-gray-900">£{{product.price}}</p>
+                    <a href="#" class="genric-btn primary">Add to cart</a>
+                    <br>
+                    <a href="{% url 'add_to_wishlist' product.id %}" class="genric-btn primary-border">Remove</a>
+                </a>
+            </div>
+            {% empty %}
+            <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+                <p class="font-bold">No products in wishlist</p>
+            </div>
+            {% endfor %}
+            </div>
+    </section>
+{% endblock body %}

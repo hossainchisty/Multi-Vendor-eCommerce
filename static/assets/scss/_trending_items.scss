@@ -1,0 +1,54 @@
+.trending_items{
+    background-color: #F4EDF2;
+    padding: 200px 0 130px;
+    @media #{$tab}{
+        padding: 70px 0 40px;
+    }
+    @media #{$medium_device}{
+        padding: 100px 0 70px;
+    }
+    
+}
+.single_product_item{
+    margin-bottom: 58px;
+    @media #{$tab}{
+        margin-bottom: 30px;
+    }
+    @media #{$medium_device}{
+        margin-bottom: 30px;
+    }
+    .single_product_item_thumb{
+        background-color: $white;
+        margin: 0 auto;
+        text-align: center;
+    }
+    h3{
+        font-size: 24px;
+        font-weight: 400;
+        margin-top: 22px;
+        line-height: 1.5;
+        margin-bottom: 25px;
+        font-family: $font_2;
+        @media #{$tab}{
+            font-size: 18px;
+        }
+        @media #{$medium_device}{
+            font-size: 18px;
+        }
+        a{
+            color: $heading_color;
+            &:hover{
+                color: $primary-color;
+            }
+        }
+    }
+    p{
+        font-size: 20px;
+        @media #{$tab}{
+            font-size: 16px;
+        }
+        @media #{$medium_device}{
+            font-size: 16px;
+        }
+    }
+}

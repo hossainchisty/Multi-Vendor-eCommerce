@@ -1,0 +1,120 @@
+.footer-area{
+    .footer-logo{
+        margin-bottom:40px;
+    }
+    .footer-pera{
+        & p{
+            color:#868c98;
+            font-size: 16px;
+            margin-bottom: 50px;
+            line-height: 1.8;
+        }
+        &.footer-pera2 p{
+            padding: 0;
+        }
+    }
+    .footer-tittle{
+        & h4{
+            color: #000;
+            font-size: 20px;
+            margin-bottom: 29px;
+            font-weight: 500;
+            text-transform: capitalize;
+            font-family:$font_2;
+        }
+        & ul{
+            & li{
+                color: #012f5f;
+                margin-bottom: 15px;
+                & a{
+                    color: #868c98;
+                    font-weight: 300;
+                    &:hover{
+                        color:#2577fd;
+                        padding-left: 5px;
+                    }
+                   
+                }
+            }
+        }
+    }
+    
+    .footer-form{
+        margin-top: 40px;
+        & form{
+            position: relative;
+            & input{
+                width: 100%;
+                height: 43px;
+                padding: 10px 20px;
+                border: 1px solid #fff;
+            }
+            & .form-icon{
+                & button{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    background: none;
+                    border: 0;
+                    cursor: pointer;
+                    padding: 13px 22px;
+                    background:$theme-color;
+                    line-height: 1;
+                }
+            }
+        }
+    }
+    .info.error {
+        color:  $theme-color;
+    }
+
+}
+
+//copy Right 
+
+
+    .footer-copy-right{
+        padding-top: 50px;
+        @media #{$md}{
+            padding-top: 0px;
+            float: left;
+        }      
+        @media #{$sm}{
+            padding-top: 0px;
+            float: left;
+        }    
+        @media #{$xs}{
+            padding-top: 0px;
+            float: left;
+        }
+        & p{
+            color: #888888;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 2;
+            margin-bottom: 20px;
+            & i{
+                color:#2577fd;
+            }
+             a{
+                color: #2577fd;
+            }
+        }
+    }
+
+
+// Social
+.footer-social{
+    & a{
+       & i{
+        color: #222222;
+        margin-right: 12px; 
+        font-size: 14px;
+        @include transition(.4s);
+        &:hover{
+            color: #2577fd;
+        }
+      
+       }
+    }
+}

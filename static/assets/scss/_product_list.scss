@@ -1,0 +1,49 @@
+/***************** product list css *******************/
+.product_sidebar{
+    .single_sedebar{
+        position: relative;
+        margin-bottom: 20px;
+        input{
+            background-color: #F4EDF2;
+            border-radius: 50px;
+            border: 1px solid #F4EDF2;
+            padding: 13px 25px;
+            width: 100%;
+            line-height: 22px;
+        }
+        ::placeholder{
+            color: #795376;
+        }
+        i{
+           position: absolute;
+           right: 30px;
+           top: 17px; 
+        }
+    }
+}
+.select_option{
+    .select_option_list{
+        background-color: #F4EDF2;
+        border-radius: 50px;
+        border: 1px solid #F4EDF2;
+        padding: 13px 25px;
+        width: 100%;
+        line-height: 22px;
+        color: #795376;
+    }
+    .select_option_dropdown{
+        background-color: #F4EDF2;
+        border-radius: 10px;
+        border: 1px solid #F4EDF2;
+        padding: 13px 25px;
+        width: 100%;
+        margin-top: 10px;
+        a{
+            color: #795376;
+
+        }
+    }
+}
+.product_list{
+
+}

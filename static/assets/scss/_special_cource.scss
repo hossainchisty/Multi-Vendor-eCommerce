@@ -1,0 +1,165 @@
+/********** special_cource_css************/
+.special_cource {
+    @media #{$small_mobile} {
+        padding: 70px 0px 50px;
+    }
+
+    @media #{$large_mobile} {
+        padding: 70px 0px 50px;
+    }
+
+    @media #{$tab_device} {
+        padding: 70px 0px 50px;
+    }
+
+    @media #{$medium_device} {}
+
+    .single_special_cource {
+
+        @media #{$small_mobile} {
+            margin-bottom: 20px;
+
+            .special_img {
+                width: 100%;
+            }
+
+        }
+
+        @media #{$large_mobile} {
+            margin-bottom: 20px;
+
+            .special_img {
+                width: 100%;
+            }
+        }
+
+        @media #{$tab_device} {
+            margin-bottom: 20px;
+        }
+
+        @media #{$medium_device} {}
+
+        .special_cource_text {
+            padding: 35px 35px 40px;
+            border: 1px solid $border_color;
+            border-top: 0px;
+
+            @media #{$small_mobile} {
+                padding: 20px 15px 15px;
+            }
+
+            @media #{$large_mobile} {
+                padding: 20px 15px 15px;
+            }
+
+            @media #{$tab_device} {}
+
+            @media #{$medium_device} {
+                padding: 20px 15px 15px;
+            }
+
+            h4 {
+                float: right;
+                color: $btn_bg;
+                font-weight: 600;
+            }
+
+            h3 {
+                font-size: 20px;
+                font-weight: 600;
+                margin-top: 25px;
+                margin-bottom: 10px;
+                @include transform_time(0.5s);
+                &:hover{
+                    color: $btn_bg;
+                }
+                @media #{$small_mobile} {
+                    margin-top: 15px;
+                    margin-bottom: 10px;
+                }
+
+                @media #{$large_mobile} {
+                    margin-top: 15px;
+                    margin-bottom: 10px;
+                    font-size: 18px;
+                }
+
+                @media #{$tab_device} {}
+
+                @media #{$medium_device} {}
+            }
+
+            .author_info {
+                display: flex;
+                justify-content: space-between;
+                padding-top: 23px;
+                margin-top: 23px;
+                border-top: 1px solid $border_color;
+
+                .author_img {
+                    position: relative;
+                    padding-left: 60px;
+                    @media #{$large_mobile}{
+                        padding-left: 53px;
+                    }
+                    @media #{$tab_device}{
+                        padding-left: 53px;
+                    }
+                    
+                    img {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                    }
+
+                    p {
+                        color: $author_text_color;
+
+                        @media #{$large_mobile} {
+                            font-size: 12px;
+                        }
+
+                        @media #{$tab_device} {
+
+                        }
+                    }
+
+                    h5 {
+                        
+
+                        a {
+                            color: $heading_color;
+                            font-size: 16px;
+                            font-weight: 500;
+                            @media #{$large_mobile} {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+
+                .author_rating {
+                    float: right;
+
+                    .rating {
+                        a {
+                            margin-left: 5px;
+                            @media #{$large_mobile}{
+                                margin-left: 0px;
+                            }
+                            @media #{$tab_device}{
+                            
+                            }
+                            
+                        }
+                    }
+
+                    p {
+                        float: right;
+                    }
+                }
+
+            }
+        }
+    }
+}

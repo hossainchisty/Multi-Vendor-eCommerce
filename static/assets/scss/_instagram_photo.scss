@@ -1,0 +1,67 @@
+/************* instagram photo css *************/
+.instagram_photo{
+    background-color: $white_color;
+    .col-lg-12{
+        padding: 0;
+    }
+    .instagram_photo_iner{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        @media #{$small_mobile}{
+            justify-content: space-around;
+        }
+        .single_instgram_photo{
+            flex: 19.5% 0 0;
+            position: relative;
+            z-index: 1;
+            @media #{$small_mobile}{
+                flex: 33% 0 0;
+                margin-bottom: 15px;
+            }
+            &:after{
+                position: absolute;
+                content: "";
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                background-color: $primary-color;
+                opacity: 0;
+                visibility: hidden;
+                z-index: 1;
+                @include transform_time(.5s);
+            }
+            i{
+                position: absolute;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                text-align: center;
+                top: 45%;
+                color: $white_color;
+                font-size: 30px;
+                z-index: 2;
+                opacity: 0;
+                visibility: hidden;
+                @include transform_time(.5s);
+            }
+            &:hover{
+                &:after{
+                    visibility: visible;
+                    opacity: .7;
+                }
+                i{
+                    top: 48%;
+                    opacity: 1;
+                    visibility: visible;
+                    @media #{$tab}{
+                        top: 40%;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+/**************** service_part css start ****************/
+.feature_part {
+  .feature_part_tittle{
+    h3{
+      font-size: 40px;
+      line-height: 1.5;
+      font-weight: 500;
+      @media #{$tab} {
+        font-size: 25px;
+      }
+      @media #{$medium_device} {
+        font-size: 30px;
+      }
+    }
+  }
+  .feature_part_content{
+    p{
+      color: #707070;
+    }
+  }
+  .single_feature_part{
+    text-align: center;
+    border: 1px solid $text-color;
+    padding: 35px;
+    margin-top: 100px;
+    @media #{$tab} {
+      margin-top: 30px;
+      padding: 25px;
+    }
+    @media #{$medium_device} {
+      padding: 25px 14px;
+    }
+    @media #{$medium_device} {
+      margin-top: 30px;
+    }
+    img{
+      max-width: 42px;
+      min-height: 40px;
+      margin-bottom: 20px;
+    }
+    h4{
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+  }
+}

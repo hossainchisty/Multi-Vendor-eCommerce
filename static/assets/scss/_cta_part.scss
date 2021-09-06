@@ -1,0 +1,58 @@
+/************** cta part css ****************/
+.cta_part{
+    @include background("../img/cta_bg.png");
+    h2{
+        font-size: 45px;
+        color: $white_color;
+        margin-bottom: 30px;
+        
+        @media #{$tab}{
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        @media #{$small_mobile}{
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+        @media #{$medium_device}{
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+    }
+    p{
+        color: $white_color;
+        font-size: 18px;
+        margin-bottom: 50px;
+        @media #{$tab}{
+            margin-bottom: 20px;
+        }
+        @media #{$small_mobile}{
+            margin-bottom: 15px;
+        }
+        @media #{$medium_device}{
+            margin-bottom: 30px;
+        }
+    }
+    .banner_btn_1{
+        color: $btn_bg;
+        border: 0px solid transparent;
+        margin-right: 28px;
+        &:hover{
+            background-color: $btn_bg !important;
+            color: $white_color;
+            @extend %custom_btn_bg_2;
+        }
+    } 
+    .banner_btn_2{
+        color: $white_color;
+        border: 1px solid $white_color;
+        background-color: transparent;
+        
+        &:hover{
+            background-color: $btn_bg !important;
+            color: $white_color;
+            @extend %custom_btn_bg_2;
+            border: 1px solid transparent;
+        }
+    }
+}

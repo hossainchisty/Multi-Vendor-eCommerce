@@ -1,0 +1,21 @@
+
+.breadcrumb_part {
+	height: 350px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #B08EAD;
+	.breadcrumb_iner {
+		text-align: center;
+		h2 {
+			font-size: 50px;
+			line-height: 1.2;
+			color: $white;
+			font-weight: 500;
+			text-transform: capitalize;
+			@media #{$tab}{
+				font-size: 30px;
+			}
+		}
+	}
+}

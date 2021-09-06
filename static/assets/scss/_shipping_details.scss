@@ -1,0 +1,23 @@
+/************ shipping details css here **************/
+.shipping_details{
+    background-color: $white_color;
+    .single_shopping_details{
+        @media #{$tab}{
+            margin-bottom: 30px;
+        }
+        i, span{
+            font-size: 45px;
+        }
+        img{
+            max-width: 48px;
+        }
+        h4{
+            font-size: 20px;
+            font-weight: 700;
+            margin: 34px 0 10px;
+            @media #{$tab}{
+                margin: 15px 0 5px;
+            }
+        }
+    }
+}

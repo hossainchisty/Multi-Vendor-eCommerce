@@ -1,0 +1,210 @@
+
+.slider-height {
+    min-height: 800px;
+    background-repeat:no-repeat ;
+    background-position: center center;
+    background-size: cover;
+    @media #{$laptop}{
+        min-height: 700px;
+    }
+    @media #{$lg}{
+        min-height: 500px;
+    }
+    @media #{$md}{
+        min-height: 500px;
+    }
+    @media #{$sm}{
+        min-height: 400px;
+    }
+    @media #{$xs}{
+        min-height: 350px;
+    }
+}
+
+.slider-height2{
+    min-height: 300px;
+    background-repeat:no-repeat ;
+    background-position: center center;
+    background-size: cover;
+    @media #{$xs}{
+        min-height: 260px;
+    }
+}
+
+.slider-area{
+    margin-top: -1px;
+    .hero__img{
+        position: relative;
+        bottom: -36px;
+        left: -114px;
+        @media #{$lg}{
+            left: -28px
+        }
+        @media #{$md}{
+            left: -83px;
+            bottom: 0px;
+        }
+        @media #{$sm}{
+            left: -179px;
+            bottom: 0px;
+        }
+        img{
+            @media #{$lg}{
+                height: 500px;
+            }
+            @media #{$md}{
+                height: 500px;
+            }
+            @media #{$sm}{
+                height: 400px;
+            }
+        }
+    }
+    .hero__caption{
+        @media #{$xs}{
+            padding-top: 38px;
+            padding-left: 22px;
+        }
+        span{
+            font-family: $font_3;
+            color:#2577fd;
+            font-size: 40px;
+            display: inline-block;
+        }
+        & h1{
+            color: #1f2022;
+            font-family: $font_1;
+            text-transform: uppercase;
+            font-size: 100px;
+            font-weight: 700;
+            line-height: 1.1;
+            text-transform: capitalize;
+            margin-bottom: 13px;
+
+
+            @media #{$lg}{
+                font-size: 60px;
+                line-height: 1.2;
+            }
+            @media #{$md}{
+                font-size: 50px;
+                line-height: 1.2;
+            }
+            @media #{$xs}{
+                font-size: 35px;
+                line-height: 1.2;
+                margin-bottom: 26px;
+            }
+        }
+        & p{
+            font-family: $font_1;
+            font-style: italic;
+            font-size: 20px;
+            line-height: 1.2;
+            font-weight: 300;
+            margin-bottom: 39px;
+            color: #313639;
+            margin-bottom: 50px;
+            text-transform: capitalize;
+            @media #{$xs}{
+                margin-bottom: 30px;
+            }
+        }
+    }
+
+}
+
+// Another Hero Page
+.slider-area{
+    .hero-cap{
+        & h2{
+            color: #000;
+            font-size: 50px;
+            font-weight: 700;
+            text-transform: capitalize;
+            @media #{$xs}{
+                font-size: 28px;
+            }
+
+        }
+    }
+}
+
+// arrow
+.slider-active {
+    & button{
+        &.slick-arrow {
+            position: absolute;
+            top: 50%;
+            left: 80px;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            background: none;
+            border: 0;
+            padding: 0;
+            z-index: 2;
+            opacity: 0;
+            visibility: hidden;
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            background: $theme_color;
+            -webkit-transition: .4s;
+            -o-transition: .4s;
+            transition: .4s;
+            i{
+                font-size: 20px;
+                line-height: 60px;
+            }
+        }
+        &.slick-next {
+            left: auto;
+            right: 80px;
+        }
+        &.slick-arrow .secondary-img {
+            right: 26px;
+        }
+       &:hover img {
+            opacity: 0;
+        }
+        &:hover .secondary-img {
+            opacity: 1;
+        }
+    }
+    // hover
+    &:hover button.slick-prev {
+        left: 100px;
+        @media #{$laptop}{
+            left: 20px; 
+        }
+        @media #{$lg}{
+            left: auto;
+            right: 10px;
+        }
+        
+    }
+    
+    &:hover button.slick-next {
+        right: 100px;
+        @media #{$laptop}{
+            right: 20px; 
+        }
+    }
+    
+    &:hover button {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    & button:hover {
+        background: #002d5b;
+    }
+    
+    .secondary-img {
+        position: absolute;
+        opacity: 0;
+    }
+    
+}

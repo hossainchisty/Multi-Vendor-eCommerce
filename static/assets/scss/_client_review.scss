@@ -1,0 +1,79 @@
+.client_review{
+    padding: 100px 0;
+    text-align: center;
+    background-color: #B08EAD;
+    position: relative;
+    @media #{$tab} {
+        padding: 70px 0;
+    }
+    @media #{$medium_device} {
+        padding: 80px 0;
+    }
+    img{
+       width: 100%;
+       border-radius: 50%;
+    }
+    p{
+        font-size: 24px;
+        line-height: 1.5;
+        color: $white;
+        @media #{$tab} {
+            font-size: 18px;
+        }
+        @media #{$medium_device} {
+            font-size: 20px;
+        }
+    }
+    h5{
+        font-size: 16px;
+        margin-top: 25px;
+        color: $white;
+        margin-bottom: 0;
+
+    }
+    .client_img{
+        max-width: 105px;
+        margin: 0 auto;
+        margin-bottom: 35px;
+        position: relative;
+        &:after{
+            position: absolute;
+            content: "";
+            right: -8px;
+            bottom: -10px;
+            content: '\f100';
+            font-family: 'Flaticon';
+            height: 50px;
+            width: 50px;
+            background-color: #E4D3DF;
+            font-size: 14px;
+            border-radius: 50%;
+            line-height: 50px;
+            color: $white;
+        }
+    }
+    .owl-nav{
+        button.owl-prev, button.owl-next{
+            width: 40px;
+            height: 40px;
+            font-size: 14px;
+            line-height: 40px;
+            border-radius: 50%;
+            border: 1px solid $text-color;
+            color: $text-color;
+            position: absolute;
+            left: -26%;
+            top: 48%;
+            @include transform_time(.5s);
+            &:hover{
+                background-color: $text-color;
+                color: $white;
+            }
+        }
+        button.owl-next{
+            text-indent: 2px;
+            left: auto;
+            right: -26%
+        }
+    }
+}

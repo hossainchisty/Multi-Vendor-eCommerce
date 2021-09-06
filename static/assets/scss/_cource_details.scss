@@ -1,0 +1,213 @@
+.course_details_area {
+  .title_top{
+    margin-top: 60px;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 13px;
+  }
+    .title {
+      font-size: 22px;
+     font-weight: 600;
+      border: none;
+      cursor: pointer;
+      margin-top: 40px;
+      position: relative;
+      padding-bottom: 10px;
+      margin-bottom: 13px;
+      border-top: 1px solid #edeff2;
+      padding-top: 30px;
+    }
+    .btn_2{
+      padding: 5px 19px;
+      font-size: 14px;
+      text-transform: capitalize !important;
+      border: 1px solid #edeff2;
+    }
+  }
+  .comments-area{
+    .thumb img{
+      width: 100px !important;
+      border-radius: 0;
+    }
+    
+  }
+  .desc{
+    h5{
+      a{
+        color: #0c2e60;
+      }
+    }
+    p{
+      font-size: 12px !important;
+    }
+  }
+  .course_details_left {
+    .content_wrapper {
+    }
+    .content {
+      color: rgb(136, 136, 136);
+      line-height: 1.929;
+    }
+    .course_list {
+      margin-bottom: 0;
+      @media (max-width: 575px) {
+        padding-left: 0;
+      }
+      li {
+        list-style: none;
+        margin-bottom: 20px;
+        .primary-btn {
+          background: #f9f9f9;
+          
+          box-shadow: none;
+          font-size: 12px;
+          border-radius: 0px;
+          &:hover {
+            
+            color: #ffffff;
+          }
+          @media (max-width: 575px) {
+            min-width: 100px;
+            font-size: 10px;
+            padding: 0 10px;
+          }
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .review-top {
+    h6{
+      color: #ee3f0e;
+      font-size: 15px;
+      margin-bottom: 21px;
+      margin-top: 7px;
+    }
+    
+  }
+  .feedeback{
+    h6{
+      margin-bottom: 16px;
+    }
+    .btn_1{
+      padding: 5px 19px;
+      margin-top: 20px;
+    }
+
+  }
+  .right-contents {
+    @media (max-width: 991px) {
+      margin-top: 50px;
+    }
+    .sidebar_top{
+      padding: 40px 30px;
+      border: 1px solid #edeff2;
+      .btn_1{
+        text-align: center;
+        margin-top: 20px;
+      }
+      span{
+        color: $font_8;
+      }
+      .color{
+        color: #0c2e60;
+        font-size: 15px;
+      }
+      ul {
+        li {
+          list-style: none;
+          padding: 10px 0px;
+          margin-bottom: 10px;
+          border-bottom: 1px solid #edeff2;
+          &:last-child{
+            border-bottom: 0px solid #edeff2;
+          }
+          a {
+            
+            text-align: left;
+            p {
+              margin-bottom: 0px;
+            }
+          }
+          .or {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+    
+    .enroll {
+      margin-top: 10px;
+      width: 100%;
+    }
+    .reviews {
+      span,
+      .star {
+        width: 31%;
+        margin-bottom: 10px;
+        color: $font_8;
+        font-size: 15px;
+      }
+    }
+    .avg-review {
+      background: #04091e;
+      text-align: center;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 20px 0px;
+      span {
+        font-size: 18px;
+        
+      }
+      @media (max-width: 991px) {
+        margin-bottom: 20px;
+      }
+    }
+    .single-reviews {
+      .thumb {
+        @media (max-width: 1024px) {
+          margin-right: 10px;
+        }
+      }
+      h5 {
+        display: inline-flex;
+        @media (max-width: 1024px) {
+          display: block;
+        }
+        .star {
+          margin-left: 10px;
+          @media (max-width: 1024px) {
+            margin: 10px 0;
+          }
+        }
+      }
+    }
+    .feedeback {
+      margin-top: 30px;
+      textarea {
+        resize: none;
+        height: 130px;
+        border: 1px solid #edeff2;
+        border-radius: 0px;
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
+    .star {
+      .checked {
+        
+      }
+    }
+    .comments-area {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      .star {
+        margin-left: 20px;
+      }
+    }
+  }

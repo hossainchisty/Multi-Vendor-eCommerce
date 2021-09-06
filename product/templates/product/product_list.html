@@ -1,0 +1,28 @@
+{% load static %}
+<div class="col-xl-4 col-lg-4 col-md-6">
+    <div class="single-product mb-60">
+        <div class="product-img">
+            <img src="{{ product.image.url }}" alt="{{product.title}}">
+            <div class="new-product">
+               {% if product.is_new %}
+                <span>New</span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="product-caption">
+            <h4><a href="{% url 'product_detail'  product.category.slug product.slug %}">
+                {{product.title|title}}</a></h4>
+            <div class="price">
+                <ul>
+                    <li>${{product.price}}</li>
+                    {% if product.discount %}
+                    <li class="discount">${{product.discount}}</li>
+                    {% endif %}
+                </ul>
+            </div>
+            <br>
+            <a href="#" class="genric-btn primary">Add to cart</a>
+            <a href="{% url 'add_to_wishlist' product.id %}" class="genric-btn primary-border">Add to wishlist</a>
+        </div>
+    </div>
+</div>

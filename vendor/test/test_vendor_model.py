@@ -4,7 +4,7 @@ from product.models import Product
 from vendor.models import Vendor
 
 
-class VendorTestCase(TestCase):
+class VendorTestCase(TransactionTestCase):
     """Test module for vendor model"""
 
     def setUp(self):
@@ -83,3 +83,7 @@ class VendorTestCase(TestCase):
         """ Test user is not a superuser """
         user = User.objects.get(email="john@example.com")
         self.assertFalse(user.is_superuser)
+
+    def test_verbose_name_plural(self):
+        """Test the plural name of vendor"""
+        self.assertEqual(str(Vendor._meta.verbose_name_plural), "Vendors")

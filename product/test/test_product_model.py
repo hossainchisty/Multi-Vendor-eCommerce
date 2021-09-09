@@ -1,11 +1,7 @@
-import unittest
-
 from customers.models import User
-from django.test import Client, TestCase, TransactionTestCase
+from django.test import TransactionTestCase
 from product.models import Category, Product
 from vendor.models import Vendor
-
-# test runser, assertion libary, headless browser
 
 
 class ProductTestCase(TransactionTestCase):
@@ -34,10 +30,13 @@ class ProductTestCase(TransactionTestCase):
             description='This is a test product',
             price=100.00,
             discount=07.00,
+            available=True,
+            is_new=True,
+            rating=4.50,
+            numbersOfReview=100,
+            countInStock=2000,
             category=Category.objects.get(title='Test Category'),
             created_by=vendor,
-            available=True,
-            is_new=True
         )
 
     def tearDown(self):
@@ -47,7 +46,32 @@ class ProductTestCase(TransactionTestCase):
         User.objects.all().delete()
         Vendor.objects.all().delete()
 
-    def test_product_price_is_correct(self):
+    def test_product_title(self):
+        """ Test that the product title is correct """
+        product = Product.objects.get(title='Test Product')
+        self.assertEqual(product.title, 'Test Product')
+
+    def test_product_slug(self):
+        """Test the slug of the product"""
+        product = Product.objects.get(title='Test Product')
+        self.assertEqual(product.slug, 'test-product')
+
+    def test_product_is_in_stock(self):
+        """Test that the product is in stock"""
+        product = Product.objects.get(title='Test Product')
+        self.assertEqual(product.countInStock, 2000)
+
+    def test_product_rating(self):
+        """Test the product rating"""
+        product = Product.objects.get(title='Test Product')
+        self.assertEqual(product.rating, 4.50)
+
+    def test_product_numbers_of_review(self):
+        """Test the numbers of review of the product"""
+        product = Product.objects.get(title='Test Product')
+        self.assertEqual(product.numbersOfReview, 100)
+
+    def test_product_price(self):
         """ Test that the product price is correct """
         product = Product.objects.get(
             title='Test Product'
@@ -60,15 +84,7 @@ class ProductTestCase(TransactionTestCase):
             title='Test Product',)
         self.assertEqual(product.discount, 07.00)
 
-    def test_product_title_is_correct(self):
-        """ Test that the product title is correct """
-        product = Product.objects.get(
-            title='Test Product',
-
-        )
-        self.assertEqual(product.title, 'Test Product')
-
-    def test_product_description_is_correct(self):
+    def test_product_description(self):
         """ Test that the product description is correct """
 
         product = Product.objects.get(title='Test Product')
@@ -97,3 +113,12 @@ class ProductTestCase(TransactionTestCase):
         """Test the product string representation"""
         product = Product.objects.get(title='Test Product')
         self.assertEqual(str(product), product.title)
+
+    def test_category_str(self):
+        """Test the category string representation"""
+        category = Category.objects.get(title='Test Category')
+        self.assertEqual(str(category), category.title)
+
+    def test_verbose_name_plural(self):
+        """Test the plural name of the product"""
+        self.assertEqual(str(Product._meta.verbose_name_plural), "Products")

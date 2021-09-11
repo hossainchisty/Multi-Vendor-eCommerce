@@ -1,11 +1,11 @@
 from customers.models import User
+from django.contrib import messages
 from django.contrib.auth import login
 from django.shortcuts import redirect, render
 from django.views.generic import CreateView
-
+from vendor.decorators import vendor_required
 from vendor.forms import VendorSignUpForm
 from vendor.models import Vendor
-from vendor.decorators import vendor_required
 
 
 class VendorSignUpView(CreateView):

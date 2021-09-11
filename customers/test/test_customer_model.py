@@ -65,6 +65,18 @@ class CustomerTestCase(TestCase):
         customer = Customer.objects.get(full_name="John Doe")
         self.assertEqual(customer.country, "UK")
 
+    def test_customer_string_representation(self):
+        """ Test __str__ method string representation """
+        customer = Customer.objects.get(full_name="John Doe")
+        self.assertEqual(str(customer), "John Doe")
+
+    def test_customer_full_name_method(self):
+        """ Test customer get_user_full_name() method """
+        customer = Customer.objects.get(full_name="John Doe")
+        actual = customer.get_user_full_name()
+        excpected = "John Doe"
+        self.assertEqual(actual.strip(), excpected)
+
     def test_user_is_active(self):
         """ Test user is active """
         user = User.objects.get(email="john@example.com")
@@ -79,3 +91,7 @@ class CustomerTestCase(TestCase):
         """ Test user is not a superuser """
         user = User.objects.get(email="john@example.com")
         self.assertFalse(user.is_superuser)
+
+    def test_verbose_name_plural(self):
+        """ Test verbose_name_plural """
+        self.assertEqual(str(Customer._meta.verbose_name_plural), "Customer")

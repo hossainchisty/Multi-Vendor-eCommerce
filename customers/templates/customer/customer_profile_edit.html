@@ -1,0 +1,38 @@
+{% extends 'core/_base.html' %} 
+{% block title %}Profile {% endblock %}
+{% load static %} 
+{% load crispy_forms_tags %}
+{% block body %}
+<link
+  href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+/>
+
+<section class="bg-white">
+  <div class="container mx-auto flex items-center flex-wrap pt-4 pb-12">
+    <style>
+        #div_id_address {
+            margin-top: 2rem;
+            padding-top: 1rem;
+        }
+    </style>
+    {% if messages %} 
+      {% for message in messages %}
+      <button class="delete"></button>
+      <div class="notification is-success is-toast">{{ message }}</div>
+      {% endfor %} 
+    {% endif %}
+    <div class="w-full lg:w-1/2 p-6">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="button is-link">Update</button>
+        </form>
+    </div>
+  </div>
+</section>
+{% endblock body %}

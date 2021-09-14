@@ -3,6 +3,7 @@
 {% block title %}Product Details {% endblock %}
 {% load static %}
 {% block body %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <!-- slider Area Start-->
     <div class="slider-area ">
         <!-- Mobile Menu -->
@@ -19,7 +20,12 @@
         </div>
     </div>
     <!-- slider Area End-->
-
+    {% if messages %} 
+      {% for message in messages %}
+      <button class="delete"></button>
+      <div class="notification is-success is-toast">{{ message }}</div>
+      {% endfor %} 
+    {% endif %}
   <!--================Single Product Area =================-->
   <div class="product_image_area">
     <div class="container">
@@ -44,20 +50,18 @@
             <p>
                 {{ products.description }}
             </p>
-            <div class="card_area">
-                <div class="product_count_area">
-                    <p>Quantity</p>
-                    <div class="product_count d-inline-block">
-                        <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
-                        <input class="product_count_item input-number" type="text" value="1" min="0" max="10">
-                        <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
-                    </div>
-                    <p>${{products.price}}</p>
-                </div>
-              <div class="add_to_cart">
-                  <a href="#" class="btn_3">add to cart</a>
-              </div>
-            </div>
+            <form method="POST" action=".">
+                    {% csrf_token %}
+                  <div class="field has-addons">
+                      <div class="control">
+                          <input type="number" name="quantity" value="1" class="input" min="1">
+                      </div>
+                      
+                      <div class="control">
+                          <button class="button is-primary is-uppercase">Add to cart</button>
+                      </div>
+                  </div>
+            </form>
           </div>
         </div>
       </div>

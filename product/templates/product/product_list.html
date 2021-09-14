@@ -1,4 +1,14 @@
 {% load static %}
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+/>
+    {% if messages %} 
+    {% for message in messages %}
+    <button class="delete"></button>
+    <div class="notification is-success is-toast">{{ message }}</div>
+    {% endfor %} 
+{% endif %}
 <div class="col-xl-4 col-lg-4 col-md-6">
     <div class="single-product mb-60">
         <div class="product-img">

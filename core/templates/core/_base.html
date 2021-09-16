@@ -8,7 +8,6 @@
         <title>{% block title %}{%endblock title%} | Lomofy</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="manifest" href="site.webmanifest">
 		<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
 
 		<!-- CSS here -->
@@ -70,8 +69,8 @@
                                 </div>
                                 <div class="header-info-right">
                                    <ul>                                          
-                                       <li><a href="login.html">My Account </a></li>
-                                       <li><a href="product_list.html">Wish List</a></li>
+                                       <li><a href="{% url 'customer_profile' %}">My Account </a></li>
+                                       <li><a href="{% url 'product_wishlist' %}">Wish List</a></li>
                                        <li><a href="cart.html">Shopping</a></li>
                                        <li><a href="cart.html">Cart</a></li>
                                        <li><a href="checkout.html">Checkout</a></li>
@@ -95,8 +94,7 @@
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>                                                
                                         <ul id="navigation">                                                                     
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="Catagori.html">Catagori</a></li>
+                                            <li><a href="{% url 'home' %}">Home</a></li>
                                             <li class="hot"><a href="#">Latest</a>
                                                 <ul class="submenu">
                                                     <li><a href="product_list.html"> Product list</a></li>
@@ -143,7 +141,7 @@
                                     </li>
                                     <li>
                                         <div class="shopping-card">
-                                            <a href="{% url 'cart_list' %}"><i class="fas fa-shopping-cart"></i></a>
+                                            <a href="{% url 'cart:cart_list' %}"><i class="fas fa-shopping-cart"></i></a>
                                         </div>
                                     </li>
                                     {% if request.user.is_authenticated %}
@@ -207,6 +205,17 @@
 		<!-- Jquery Plugins, main Jquery -->	
         <script src="{% static 'assets/js/plugins.js' %}"></script>
         <script src="{% static 'assets/js/main.js' %}"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+            const $notification = $delete.parentNode;
+
+            $delete.addEventListener('click', () => {
+            $notification.parentNode.removeChild($notification);
+            });
+        });
+        });
+    </script>
         
     </body>
 </html>

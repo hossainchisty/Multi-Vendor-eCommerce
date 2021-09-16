@@ -36,7 +36,7 @@ class Review(BaseModel):
         OrderItem, verbose_name=_("order product"), on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.star
+        return str(self.star)
 
     class Meta:
         ordering = ('-star',)

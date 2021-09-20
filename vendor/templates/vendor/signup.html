@@ -1,16 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <form action="" method="post" enctype="multipart/form-data">
-      {{ form.as_p }}
-      {% csrf_token %} 
-      <input type="submit" value="Submit" />
-    </form>
-  </body>
-</html>
+{% extends 'vendor/base_vendor.html' %} 
+{% load crispy_forms_tags %} 
+{% block content %}
+{% load crispy_forms_tags %}
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+      <h1 class="mb-8 text-3xl text-center font-bold">Sign up</h1>
+        <p class="text-center text-1xl font-bold">Sign up to see photos from your friends.</p>
+          <div class="container text-center">
+              <br>
+              <form action="" method="POST">
+                  {% csrf_token %}
+
+                  {{ form|crispy }}
+                  
+              <button
+                  type="submit"
+                  class="w-full text-center py-3 rounded bg-green-400 text-white hover:bg-green-dark focus:outline-none my-1">
+                  Create Account</button>
+              </form>
+          
+              <div class="text-center text-sm text-grey-dark mt-4">
+              <input type="checkbox" class="form-checkbox" >
+                  By signing up, you agree to the 
+                  <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                      Terms of Service
+                  </a> and 
+                  <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                      Data Policy and Cookies Policy.
+                  </a>
+              </div>
+
+            <div class="text-grey-dark mt-6 pl-7 text-center">
+                Have an account?
+                <a class="no-underline border-b border-blue text-blue-800" 
+                href="">Log in</a>
+            </div>
+        </div>
+  {% endblock content %}

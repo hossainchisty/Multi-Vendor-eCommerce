@@ -22,10 +22,16 @@
         <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <link rel="stylesheet" href="https://unpkg.com/@trevoreyre/autocomplete-js/dist/style.css" />
    </head>
 
    <body>
-       
+    {% if messages %} 
+      {% for message in messages %}
+      <button class="delete"></button>
+      <div class="notification is-success is-toast">{{ message }}</div>
+      {% endfor %} 
+    {% endif %}
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -72,8 +78,8 @@
                                        <li><a href="{% url 'customer_profile' %}">My Account </a></li>
                                        <li><a href="{% url 'product_wishlist' %}">Wish List</a></li>
                                        <li><a href="cart.html">Shopping</a></li>
-                                       <li><a href="cart.html">Cart</a></li>
-                                       <li><a href="checkout.html">Checkout</a></li>
+                                       <li><a href="{% url 'cart:cart_list' %}">Cart</a></li>
+                                       <li><a href="{% url 'order:checkout' %}">Checkout</a></li>
                                    </ul>
                                 </div>
                             </div>
@@ -103,11 +109,11 @@
                                             </li>
                                             <li><a href="blog.html">Blog</a>
                                                 <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
+                                                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                                                    <li><a href="{% url 'blog_detail' %}">Blog Details</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#">Pages</a>
+                                            {% comment %} <li><a href="#">Pages</a>
                                                 <ul class="submenu">
                                                     <li><a href="login.html">Login</a></li>
                                                     <li><a href="cart.html">Card</a></li>
@@ -115,9 +121,9 @@
                                                     <li><a href="about.html">About</a></li>
                                                     <li><a href="confirmation.html">Confirmation</a></li>
                                                     <li><a href="cart.html">Shopping Cart</a></li>
-                                                    <li><a href="checkout.html">Product Checkout</a></li>
+                                                    <li><a href="">Product Checkout</a></li>
                                                 </ul>
-                                            </li>
+                                            </li> {% endcomment %}
                                             <li><a href="{% url 'contact' %}">Contact</a></li>
                                         </ul>
                                     </nav>
@@ -125,14 +131,27 @@
                             </div> 
                             <div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 fix-card">
                                 <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
+                                                
+                                    
                                     <li class="d-none d-xl-block">
                                         <div class="form-box f-right ">
-                                            <input type="text" name="Search" placeholder="Search products">
-                                            <div class="search-icon">
-                                                <i class="fas fa-search special-tag"></i>
+                                            <form method="get" action="{% url 'search' %}">
+                                            <div id="autocomplete" class="autocomplete">
+                                                <input name="query" class="input is-link" placeholder="Search in Lomofy"
+                                                    aria-label="Search in Lomofy"
+                                                >
+                                                <div class="search-icon">
+                                                    <i class="fas fa-search special-tag"></i>
+                                                </div>
+
+                                                
+                                                <ul class="autocomplete-result-list"></ul>
                                             </div>
+                                            </form>
                                         </div>
-                                     </li>
+                                    </li>
+                                    
+
                                     <li class=" d-none d-xl-block">
                                         <div class="favorit-items">
                                             <a href="{% url 'product_wishlist' %}"><i class="far fa-heart">
@@ -169,7 +188,7 @@
     {% block body %}
 
     {% endblock body %}
-    
+
 	<!-- JS here -->
 	
 		<!-- All JS Custom Plugins Link Here here -->
@@ -205,17 +224,60 @@
 		<!-- Jquery Plugins, main Jquery -->	
         <script src="{% static 'assets/js/plugins.js' %}"></script>
         <script src="{% static 'assets/js/main.js' %}"></script>
-        <script>
-        document.addEventListener('DOMContentLoaded', () => {
-        (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
-            const $notification = $delete.parentNode;
+        <script src="{% static 'assets/js/autocomplete.js' %}"></script>
+        <script src="https://unpkg.com/@trevoreyre/autocomplete-js"></script>
 
-            $delete.addEventListener('click', () => {
-            $notification.parentNode.removeChild($notification);
+
+        <script>
+            new Autocomplete('#autocomplete', {
+
+                search: input => {
+                    console.log(input)
+                    const url = `/search?query=${input}`
+                    return new Promise(resolve => {
+                        fetch(url)
+                            .then(response => response.json())
+                            .then(data => {
+                                resolve(data.data)
+                            })
+                            .catch(error => {
+                                console.log(error)
+                            })
+                    })
+
+                },
+                    renderResult: (result, props) => {
+                            console.log(props)
+                    
+                            let group = ''
+                            if (result.index % 3 === 0) {
+                                group = `<li class="group">Group</li>`
+                            }
+                            return `${group}
+                                <li ${props}>
+                                    <div class="wiki-title">
+                                    <img src="${result.url}" alt="${result.title}">
+                                    ${result.title}
+                                    </div>
+                                </li>`
+                        },
+
+                        getResultValue: result => result,
+                        onSubmit: result => {
+                            window.open(`product?query=${result.title}`)
+                        }
+                    });
+
+                document.addEventListener('DOMContentLoaded', () => {
+                (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+                    const $notification = $delete.parentNode;
+
+                    $delete.addEventListener('click', () => {
+                        $notification.parentNode.removeChild($notification);
+                    });
+                });
             });
-        });
-        });
-    </script>
+        </script>
         
     </body>
 </html>

@@ -30,7 +30,7 @@ pycodestyle==2.7.0
 pyflakes==2.3.1
 pytz==2021.1
 six==1.16.0
-sqlparse==0.4.1
+sqlparse==0.4.2
 toml==0.10.2
 urllib3==1.26.6
 uvicorn==0.15.0

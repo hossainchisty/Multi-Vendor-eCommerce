@@ -1,6 +1,6 @@
 """
 Title: Multi vendor eCommerce software application
-Description: Multi-seller e-commerce marketplace platform like - Amazon, Daraz, eBay, Etsy and Souq.
+Description: Multi-seller e-commerce platform.
 Author: Hossain Chisty(Backend Developer)
 Contact: hossain.chisty11@gmail.com
 Github: https://github.com/hossainchisty
@@ -16,8 +16,7 @@ import django_heroku
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # cloudinary configration
-cloudinary.config(cloud_name="hossainchisty",
-                  api_key="958916513788356",
+cloudinary.config(cloud_name="hossainchisty", api_key="958916513788356",
                   api_secret="2BaQjUoM5jHa3K6VVpbaSs_icBQ")
 
 SECRET_KEY = 'django-insecure-aw5k1oe@$nupmyzx+u1$+)a#@*b8ltdkp+q=&pg5q@=fl&8ims'
@@ -39,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'cloudinary',
     'django_countries',
-    'widget_tweaks',
     'crispy_forms',
     'taggit',
+    'captcha',
     # local apps
     'core.apps.CoreConfig',
     'cart.apps.CartConfig',
@@ -77,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -88,6 +88,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Custom user model
 AUTH_USER_MODEL = "customers.User"
+
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
 
 DATABASES = {
     'default': {
@@ -137,11 +139,22 @@ EMAIL_HOST_PASSWORD = "#2#3B399TiU@aBC"
 EMAIL_USE_SSL = True
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
+# Google reCAPTCHA
+RECAPTCHA_PUBLIC_KEY = '6LdDdJYcAAAAAF8MaL1PGHRCnkoSGsNuDaQ1bCXD'
+RECAPTCHA_PRIVATE_KEY = '6LdDdJYcAAAAAEpnhcFoqjVfLmTvTcFU_EiSaD6z'
+
 # Session configuration
 CART_SESSION_ID = 'cart'
 SESSION_COOKIE_AGE = 86400  # 24 hours in seconds
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
+# Celery Configurations
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Dhaka'
 
 LOGIN_URL = 'customer_sign_in'
 LOGIN_REDIRECT_URL = '/'

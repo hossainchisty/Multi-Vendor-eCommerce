@@ -1,8 +1,13 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.db import transaction
-from .models import Customer, User
-from django import forms
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
 from django_countries.fields import CountryField
+
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.db import transaction
+from django.forms import ModelForm
+
+from .models import Customer, User
 
 
 class CustomerSignUpForm(UserCreationForm):
@@ -11,6 +16,7 @@ class CustomerSignUpForm(UserCreationForm):
     address = forms.CharField(widget=forms.Textarea)
     full_name = forms.CharField(max_length=255)
     phone_number = forms.CharField(max_length=17)
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
     def __init__(self, *args, **kwargs):
         super(CustomerSignUpForm, self).__init__(*args, **kwargs)
@@ -37,3 +43,9 @@ class CustomerSignUpForm(UserCreationForm):
         customer.save()
 
         return customer
+
+
+class CustomerUpdateForm(ModelForm):
+    class Meta:
+        model = Customer
+        fields = ('full_name', 'email', 'phone_number', 'country', 'address')

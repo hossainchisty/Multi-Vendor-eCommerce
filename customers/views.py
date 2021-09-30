@@ -1,24 +1,37 @@
 from django.contrib import messages
-from django.contrib.auth import login
-from django.contrib.auth import views as auth_views
-from django.contrib.auth.forms import AuthenticationForm
-from django.shortcuts import redirect, render
-from django.views.generic import CreateView
+from django.contrib.auth import (
+    authenticate, login, update_session_auth_hash, views as auth_views,
+)
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.shortcuts import redirect, render
+from django.views.decorators.csrf import csrf_exempt
+from order.models import OrderItem
+
+
+from .decorators import customer_required
 from .forms import CustomerSignUpForm, CustomerUpdateForm
-from .models import User
+from .utils import service
 
 
+@customer_required
 @login_required(login_url='customer_sign_in')
 def CustomerProfile(request):
+    # product = Product.objects.filter(created_by=vendor)
+    order = OrderItem.objects.all()
+
     context = {
         'customer': request.user.customer,
+        'orders': order,
+        # 'products': product,
     }
+
     return render(request, 'customer/customer_profile.html', context)
 
 
 @login_required(login_url='customer_sign_in')
 def CustomerProfileUpdate(request):
+    ''' Update customer profile '''
     if request.method == 'POST':
         form = CustomerUpdateForm(request.POST, instance=request.user.customer)
         if form.is_valid():
@@ -33,24 +46,44 @@ def CustomerProfileUpdate(request):
         return render(request, 'customer/customer_profile_edit.html', context)
 
 
-class CustomerSignUpView(CreateView):
-    model = User
-    form_class = CustomerSignUpForm
-    template_name = 'customer/sign_up.html'
-    success_url = '/'
+@csrf_exempt
+def CustomerSignUpView(request):
+    ''' Sign up view for new customer account.'''
+    if request.method == 'POST':
+        # full_name = request.POST.get['full_name']
+        form = CustomerSignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Thanks for registering. You are now logged in.')
+            user = authenticate(email=form.cleaned_data['email'], password=form.cleaned_data['password1'])
+            login(request, user)
+            service.send_welcome_mail(request, request.user.customer.email)
+            return redirect('/')
+    else:
+        form = CustomerSignUpForm()
+        return render(request, 'customer/sign_up.html', {'form': form})
 
-    def get_context_data(self, *args, **kwargs):
-        kwargs['user_type'] = 'customer'
-        return super().get_context_data(**kwargs)
 
-    def form_vaild(self, form):
-        user = form.save()
-        messages.success(
-            self.request, 'New customer account created successfully')
-        login(self.request, user)
-        return redirect('core:home')
+@customer_required
+@login_required(login_url='customer_sign_in')
+def change_password_view(request):
+    '''A form for allowing customer to change with old password '''
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            form = PasswordChangeForm(user=request.user, data=request.POST)
+            if form.is_valid():
+                form.save()
+                update_session_auth_hash(request, form.user)
+                messages.success(request, "Password Change Successfully!")
+                return redirect('/')
+        else:
+            form = PasswordChangeForm(user=request.user)
+            return render(request, "customer/password_change.html", {"form": form})
+    else:
+        return redirect('customer_sign_in')
 
 
 class SignInView(auth_views.LoginView):
+    ''' Sign in for customer '''
     form_class = AuthenticationForm
     template_name = 'customer/sign_in.html'

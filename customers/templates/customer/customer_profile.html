@@ -60,7 +60,6 @@
     </nav>
     {% if messages %} 
       {% for message in messages %}
-      <button class="delete"></button>
       <div class="notification is-success is-toast">{{ message }}</div>
       {% endfor %} 
     {% endif %}
@@ -89,24 +88,30 @@
         </div>
         <div class="container">
         <h3 class="is-size-4 has-text-weight-medium">Recent Orders</h3>
-        <table class="table">
+        <table class="table has-text-centered">
           <tr class="th">
-              <th>Order #</th>
-              <th>Placed On</th>
-              <th>Items</th>
-              <th>Total</th>
+          {% for item in orders %}
+              <th>Order No.</th>
+              <th>Thumbnail</th>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Price</th>
           </tr>
        
-          {% for item in orders.items.all %}
-          {% if item.customer == request.user.customer %}            
+                   
           <tr>
-              <td>#{{order.id}}</td>
-              <td>80</td>
-              <td>{{order.product.title}}</td>
-              <td>75</td>
+              <td>{{item.id}}</td>
+              <td>
+               <figure class="container-fluid image is-96x96">
+                <img src="{{item.product_image.url}}">
+              </figure> 
+              </td>
+              <td>{{item.product_title|title}}</td>
+              <td>{{item.product_quantity}}</td>
+              <td>{{item.product_price}}</td>
           </tr>
        
-          {% endif %}
+    
           {% endfor %}
         </table>
       </div>

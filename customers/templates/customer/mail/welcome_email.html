@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta name="viewport" content="width = 375, initial-scale = -1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        @media only (min-width:300px) and (max-width:600px) {
+            .td {font-size:10px !important;}
+        }
+    </style>
+  </head>
+
+<body style="background-color: #ffffff; font-size: 16px;">
+    <center>
+      <table align="center" border="0" cellpadding="0" cellspacing="0" style="height:100%; width:600px;">
+         
+          <tr>
+            <td align="center" style="padding:30px">
+               <p style="text-align:left">Hi {{user.full_name}},<br><br> 
+               Thank you for registering with the Lomofy. We appreciate your interest in Lomofy!<br><br>
+              </p>
+              <p>
+                <a target="_blank" href="" style="text-decoration:none; background-color: green; border: black 1px solid; color: #fff; padding:10px 10px; display:block;">
+                  <strong>Continue Shopping</strong></a>
+              </p>
+              <p style="text-align:left"> We can control our finances, you will know how much you spend, you have more control over money and a smaller saving problem.<br></p>
+              <p style="text-align:left">
+               Thank you,
+               <br>The Lomofy Team
+               <br>
+               <br>
+               {{ request.headers.user_agent }}
+               <p>**This is an automated message**</p>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </center>
+  </body>
+</html>

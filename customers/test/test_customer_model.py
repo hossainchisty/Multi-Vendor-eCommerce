@@ -1,9 +1,9 @@
-from django.test import TestCase
 from customers.models import Customer, User
+from django.test import TestCase
 
 
 class CustomerTestCase(TestCase):
-    """ Test module for customer model """
+    """ Test suite for customer model """
 
     def setUp(self):
         """ Set up test database """
@@ -37,7 +37,12 @@ class CustomerTestCase(TestCase):
     def test_customer_invalid_email(self):
         """Test creating customer with no email raises error"""
         with self.assertRaises(ValueError):
-            User.objects.create_user(None, password="password")
+            User.objects.create_user(None, password="password", is_customer=True)
+
+    def test_customer_invaild_password(self):
+        """ Test creating customer with no password raises error """
+        with self.assertRaises(ValueError):
+            User.objects.create_user(None, is_customer=True)
 
     def test_customer_email_normalized(self):
         """ Test email is normalized """
@@ -49,6 +54,11 @@ class CustomerTestCase(TestCase):
         """ Test customer full name """
         customer = Customer.objects.get(full_name="John Doe")
         self.assertEqual(customer.full_name, "John Doe")
+
+    def test_customer_full_name_max_length(self):
+        """ Test customer full name max length """
+        customer = Customer.objects.get(full_name="John Doe")
+        self.assertEqual(customer._meta.get_field("full_name").max_length, 255)
 
     def test_customer_phone_number(self):
         """ Test customer phone number """

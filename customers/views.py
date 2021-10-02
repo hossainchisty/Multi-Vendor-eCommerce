@@ -29,6 +29,7 @@ def CustomerProfile(request):
     return render(request, 'customer/customer_profile.html', context)
 
 
+@customer_required
 @login_required(login_url='customer_sign_in')
 def CustomerProfileUpdate(request):
     ''' Update customer profile '''

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load tailwind_filters %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Sign In</title>
+         <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+    
+<body>
+    <div class="bg-grey-lighter min-h-screen flex flex-col">
+        <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                <h1 class="mb-8 text-3xl text-center font-bold">Sign In</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                <br>
+                <br>
+                <div class="flex items-center mb-6 -mt-4">
+                <div class="flex ml-auto">
+                    <a href="" class="inline-flex text-xs sm:text-sm text-blue-500 hover:text-blue-700">Forgot Your Password?</a>
+                </div>
+                </div>
+
+                <div class="flex w-full">
+                <button type="submit" class="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-green-400 hover:bg-green-dark  rounded py-2 w-full transition duration-150 ease-in">
+                    <span class="mr-2 uppercase">Sign In</span>
+                    <span>
+                    <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    </span>
+                </button>
+                </div>
+            </form>
+
+        <div class="text-start ml-10 pt-6">
+            Don't have an account? <a href="{% url 'vendor:vendor_sign_up' %}" class="ml-2 text-blue-800">Sign Up</a>
+        </div>
+    </div>
+<div>
+</body>
+</html>

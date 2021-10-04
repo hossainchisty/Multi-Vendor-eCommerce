@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load tailwind_filters %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Sign up</title>
+         <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+    
+    <body>
+        {% if messages %} 
+            {% for message in messages %}
+            <div class="notification is-success is-toast">{{ message }}</div>
+            {% endfor %} 
+        {% endif %}
+        <div class="bg-indigo-200 min-h-screen flex flex-col">
+            <div class="max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center">
+                <div class="bg-blue-100 px-6 py-8 rounded shadow-md text-black w-full">
+                    <p class="text-center text-3xl font-bold">SELL ON LOMOFY</p>
+                    <p class="text-center font-bold">Open Your Online Store Now</p>
+                    <br>
+                    <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                        <button
+                            type="submit"
+                            class="w-full text-center py-3 rounded bg-green-400 text-white hover:bg-green-dark focus:outline-none my-1">
+                            Create Account
+                        </button>
+                    </form>
+                
+                    <div class="text-center text-sm text-grey-dark mt-4">
+                    <input type="checkbox" class="form-checkbox" >
+                       I've read and understood Lomofy's 
+                       <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                            Terms of Service
+                        </a> and 
+                    </div>
+
+                <div class="text-grey-dark mt-6 pl-7 text-center">
+                    Have an account?
+                    <a class="no-underline border-b border-blue text-blue-800" 
+                    href="{% url 'vendor:vendor_sign_in' %}">Sign In</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>

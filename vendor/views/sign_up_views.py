@@ -1,11 +1,7 @@
-from customers.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect, render
-from django.urls import reverse_lazy
-from vendor.decorators import vendor_required
 from vendor.forms import VendorSignUpForm
-from vendor.models import Vendor
 from vendor.utils import service
 
 

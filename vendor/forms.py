@@ -1,13 +1,16 @@
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
 from cloudinary.forms import CloudinaryFileField
+from django_countries.fields import CountryField
+
 from customers.models import User
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.forms import ModelForm
-from django_countries.fields import CountryField
+from product.models import Product
 
 from .models import Vendor
-from product.models import Product
 
 
 class VendorSignUpForm(UserCreationForm):
@@ -19,6 +22,7 @@ class VendorSignUpForm(UserCreationForm):
     shop_logo = CloudinaryFileField()
     owner_name = forms.CharField(max_length=255)
     nid_number = forms.CharField(max_length=10)
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
     def __init__(self, *args, **kwargs):
         super(VendorSignUpForm, self).__init__(*args, **kwargs)

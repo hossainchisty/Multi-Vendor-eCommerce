@@ -2,12 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from product.models import Product
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from customers.decorators import customer_required
 
 
 @customer_required
-@login_required(login_url='customer_sign_in')
 def product_wishlist(request):
     ''' Display the products in the wishlist '''
     products = Product.objects.filter(wishlist=request.user.customer)
@@ -15,7 +13,6 @@ def product_wishlist(request):
 
 
 @customer_required
-@login_required(login_url='customer_sign_in')
 def add_to_wishlist(request, product_id):
     ''' if user has already added the product to the wishlist, 
         then remove it from the wishlist else create a new wishlist item '''

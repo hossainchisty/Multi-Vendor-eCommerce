@@ -14,8 +14,9 @@ def product_wishlist(request):
 
 @customer_required
 def add_to_wishlist(request, product_id):
-    ''' if user has already added the product to the wishlist, 
-        then remove it from the wishlist else create a new wishlist item '''
+    '''
+    if user has already added the product to the wishlist, then remove it from the wishlist else create a new wishlist item.
+    '''
 
     product = get_object_or_404(Product, id=product_id)
 

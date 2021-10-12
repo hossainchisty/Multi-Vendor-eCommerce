@@ -2,6 +2,8 @@ import urllib.parse
 
 from customers.decorators import customer_required
 from django.core.paginator import Paginator
+from django.db.models import Q
+from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import CommentForm
@@ -11,7 +13,7 @@ from .models import Category, Comment, Post
 @customer_required
 def blog_post_view(request):
     '''
-    This view will render all posts & filter categories. 
+    This view will render all posts & filter categories.
     '''
     posts = Post.published.all()
     paginator = Paginator(posts, 1)
@@ -19,7 +21,7 @@ def blog_post_view(request):
     page_obj = paginator.get_page(page_number)
 
     category = request.GET.get('category')
-    if category == None:
+    if category is None:
         posts = Post.published.all()
     else:
         posts = Post.published.filter(category__name=category)
@@ -59,6 +61,23 @@ def blog_details_view(request, slug):
     '''
     comments = Comment.objects.filter(post=post, customer=request.user.customer)
 
+    context = {
+        'post': post,
+        'comments': comments,
+        'total_category': total_category,
+        'share_able_link': share_able_link,
+        'total_comments_on_post': total_comments,
+        'category': category.values_list('name', flat=True).first(),
+    }
+
+    return render(request, 'blog/blog_detail.html', context)
+
+
+@customer_required
+def create_comment_view(request, slug):
+    '''
+    This will create new comment on a specific post.
+    '''
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -69,31 +88,25 @@ def blog_details_view(request, slug):
             comment.save()
             return redirect('blog:blog_detail', slug=slug)
     else:
+        return render(request, 'blog/blog_detail.html')
+
+
+@customer_required
+def blog_search_view(request):
+    '''
+    This view will search for the blog post with title, slug and category.
+    '''
+    queryset = request.GET.get('q')
+    if queryset:
+        posts = Post.published.filter(Q(title__icontains=queryset) | Q(slug__icontains=queryset) | Q(category__name=queryset))
         context = {
-            'post': post,
-            'comments': comments,
-            'total_category': total_category,
-            'share_able_link': share_able_link,
-            'total_comments_on_post': total_comments,
-            'category': category.values_list('name', flat=True).first(),
+            'query': queryset,
+            'page_obj': posts,
         }
+        return render(request, 'blog/blog.html', context)
+    else:
+        raise Http404
 
-        return render(request, 'blog/blog_detail.html', context)
-
-# def blog_search_view(request):
-#     '''
-#     This view will search for the specific blog post.
-#     '''
-#     query = request.GET.get('q')
-#     if query:
-#         posts = Post.published.filter(title__icontains=query)
-#         context = {
-#             'query': query,
-#             'posts': posts,
-#         }
-#         return render(request, 'blog/blog_search.html', context)
-#     else:
-#         return redirect('blog:blog_post')
 
 # @customer_required
 # def comment_delete_view(request, slug, pk):

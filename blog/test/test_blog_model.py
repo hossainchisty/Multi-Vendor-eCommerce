@@ -116,7 +116,7 @@ class TestCommentModel(TestCase):
         )
         category = Category.objects.create(name='Test Category')
         post = Post.objects.create(title='Test Post', slug='test-post', content='Test Content', author=user, category=category, )
-        comment = Comment.objects.create(post=post, customer=who_commented, body='Test Comment')
+        Comment.objects.create(post=post, customer=who_commented, body='Test Comment')
 
     def tearDown(self):
         '''

@@ -86,7 +86,11 @@
                   {% endfor %}
                </div>
                <div class="comment-form">
-                  <form method="POST" class="form-contact comment_form"  id="commentForm">
+                  <form 
+                     action="{% url 'blog:create_comment' post.slug %}" 
+                     method="POST" 
+                     class="form-contact comment_form"
+                     id="commentForm">
                      {% csrf_token %}
                      <div class="row">
                         <div class="col-12">

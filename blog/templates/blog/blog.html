@@ -51,7 +51,8 @@
                        
                         {% empty %}
                         <div class="container content-center mx-auto mt-15">
-                            <h1 class="font-bold p-10 text-center text-red-500">Didn't match any  keyword. Please try again with different keywords.</h1>   
+                            <h1 class="font-bold p-10 text-center text-red-500">
+                            Your search - "{{ query }}" Didn't match any  keyword. Please try again with different keywords.</h1>   
                         </div>
                         {% endfor %}
                         <nav aria-label="Page navigation example">
@@ -76,10 +77,10 @@
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
-                            <form action="#" method="GET">
+                            <form action="{% url 'blog:search' %}" method="GET">
                                 <div class="form-group">
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder='Search Keyword'
+                                        <input name='q' type="text" class="form-control" placeholder='Search Keyword'
                                             onfocus="this.placeholder = ''"
                                             onblur="this.placeholder = 'Search Keyword'">
                                         <div class="input-group-append">

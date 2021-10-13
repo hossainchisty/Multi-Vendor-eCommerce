@@ -5,7 +5,6 @@ from django.contrib.auth import (
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.shortcuts import redirect, render
-from django.views.decorators.csrf import csrf_exempt
 from order.models import OrderItem
 
 
@@ -47,11 +46,9 @@ def CustomerProfileUpdate(request):
         return render(request, 'customer/customer_profile_edit.html', context)
 
 
-@csrf_exempt
 def CustomerSignUpView(request):
     ''' Sign up view for new customer account.'''
     if request.method == 'POST':
-        # full_name = request.POST.get['full_name']
         form = CustomerSignUpForm(request.POST)
         if form.is_valid():
             form.save()
@@ -60,6 +57,8 @@ def CustomerSignUpView(request):
             login(request, user)
             service.send_welcome_mail(request, request.user.customer.email)
             return redirect('/')
+        else:
+            messages.error(request, 'Invalid form.')
     else:
         form = CustomerSignUpForm()
         return render(request, 'customer/sign_up.html', {'form': form})
@@ -69,19 +68,16 @@ def CustomerSignUpView(request):
 @login_required(login_url='customer_sign_in')
 def change_password_view(request):
     '''A form for allowing customer to change with old password '''
-    if request.user.is_authenticated:
-        if request.method == "POST":
-            form = PasswordChangeForm(user=request.user, data=request.POST)
-            if form.is_valid():
-                form.save()
-                update_session_auth_hash(request, form.user)
-                messages.success(request, "Password Change Successfully!")
-                return redirect('/')
-        else:
-            form = PasswordChangeForm(user=request.user)
-            return render(request, "customer/password_change.html", {"form": form})
+    if request.method == "POST":
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            messages.success(request, "Password Change Successfully!")
+            return redirect('/')
     else:
-        return redirect('customer_sign_in')
+        form = PasswordChangeForm(user=request.user)
+        return render(request, "customer/password_change.html", {"form": form})
 
 
 class SignInView(auth_views.LoginView):

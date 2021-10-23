@@ -1,10 +1,9 @@
-from django.db import models
-from django.conf import settings
-from customers.models import User
-from model.common_fields import BaseModel
 from cloudinary.models import CloudinaryField
-from django_countries.fields import CountryField
+
+from customers.models import User
 from django.core.validators import RegexValidator
+from django.db import models
+from model.common_fields import BaseModel
 
 
 class Vendor(BaseModel):
@@ -26,7 +25,7 @@ class Vendor(BaseModel):
     address = models.TextField(null=True)
 
     def __str__(self):
-        return str(self.user)
+        return f'Owner - {self.owner_name.capitalize()} Store name - `{self.vendor_name.capitalize()}`'
 
     class Meta:
         verbose_name_plural = "Vendors"

@@ -72,12 +72,21 @@
                 </table>
             </div>
         </div>
+         <div class="checkout_btn_inner float-right mb-6">
+            <a href="{% url 'home' %}" class="button is-link is-outlined is-rounded">
+            Continue Shopping
+            </a>
+            <a href="{% url 'order:checkout' %}" class="button is-primary is-rounded">
+            Proceed to checkout
+            </a>
+          </div>
+        </div>
         </div>
     {% else %}
         <div class="container mt-5 pt-5">
             <div class="notification is-danger">
                 <button class="delete"></button>
-                <p class="text-white">Your cart is empty! Sounds like a good time to start <a class="is-underlined" href="{% url 'home' %}">shopping</a></p>
+                <p class="text-white">Your cart is empty!<a class="is-underlined" href="{% url 'home' %}">Shopping</a></p>
             </div>
         </div>
     {% endif %}

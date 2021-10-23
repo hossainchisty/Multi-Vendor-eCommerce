@@ -1,7 +1,9 @@
-from customers.models import User
+from django.template.defaultfilters import slugify
 from django.test import TransactionTestCase
+
 from product.models import Category, Product
 from vendor.models import Vendor
+from customers.models import User
 
 
 class ProductTestCase(TransactionTestCase):
@@ -54,7 +56,7 @@ class ProductTestCase(TransactionTestCase):
     def test_product_slug(self):
         """Test the slug of the product"""
         product = Product.objects.get(title='Test Product')
-        self.assertEqual(product.slug, 'test-product')
+        self.assertEqual(product.slug, slugify(product.title))
 
     def test_product_is_in_stock(self):
         """Test that the product is in stock"""

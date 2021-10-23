@@ -1,13 +1,19 @@
-from cloudinary.models import CloudinaryField
 from customers.models import Customer
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from product.models import Product
+from vendor.models import Vendor
 
 
 class Order(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    shipping_price = models.DecimalField(max_digits=6, decimal_places=2)
+    first_name = models.CharField(max_length=50, null=True)
+    last_name = models.CharField(max_length=50, null=True)
+    email = models.EmailField(unique=True, null=True)
+    address = models.TextField(null=True, blank=True)
+    zipcode = models.CharField(max_length=250, null=True)
+    place = models.CharField(max_length=250, null=True)
+    phone = models.CharField(max_length=250, null=True)
+    paid_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     total_price = models.DecimalField(max_digits=6, decimal_places=2)
 
     isPaid = models.BooleanField(default=False)
@@ -20,6 +26,7 @@ class Order(models.Model):
     isReturn = models.BooleanField(default=False)
 
     order_created = models.DateTimeField(auto_now_add=True)
+    customer = models.ManyToManyField(Customer)
 
     STATUS = (
         ("Processing", "Processing"),
@@ -36,15 +43,12 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-
-    product_title = models.CharField(max_length=200)
-    product_price = models.DecimalField(max_digits=6, decimal_places=2)
-    product_discount_price = models.DecimalField(
-        max_digits=6, decimal_places=2)
-    product_quantity = models.PositiveIntegerField(default=1)
-    product_image = CloudinaryField('image')
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
+    vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, null=True)
+    quantity = models.IntegerField(default=0, null=True, blank=True)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
 
     def __str__(self):
-        return self.product_title
+        return self.product.title

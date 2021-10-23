@@ -48,4 +48,4 @@ class CustomerSignUpForm(UserCreationForm):
 class CustomerUpdateForm(ModelForm):
     class Meta:
         model = Customer
-        fields = ('full_name', 'email', 'phone_number', 'country', 'address')
+        fields = ('full_name', 'email', 'image', 'phone_number', 'country', 'address')

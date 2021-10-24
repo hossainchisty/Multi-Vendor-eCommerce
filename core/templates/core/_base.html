@@ -6,7 +6,15 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <!-- [lomofy] collocated from https://brandlance.com/lomofy-com.html -->
         <title>{% block title %}{%endblock title%} | Lomofy</title>
-        <meta name="description" content="">
+        <!-- SEO Tags -->
+        <meta name="author" content="Hossain Chisty(Backend Developer)">
+        <meta name="description" content="django multi-vendor-e-commerce website">
+        <meta name="keywords" content="django, e-commerce, e-store, e-shop, desktop, laptop, smartphone, gaming, Lomofy, python, multi-vendor-ecommerce-software">
+        <link rel="canonical" href="https://multi-vendor-ecommerce-app.herokuapp.com/">
+        <meta property="og:title" content="Django e-commerce website" />
+        <meta property="og:description" content="e-commerce website">
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://multi-vendor-ecommerce-app.herokuapp.com/">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
 
@@ -26,12 +34,6 @@
    </head>
 
    <body>
-    {% if messages %} 
-      {% for message in messages %}
-      <button class="delete"></button>
-      <div class="notification is-success is-toast">{{ message }}</div>
-      {% endfor %} 
-    {% endif %}
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -75,11 +77,13 @@
                                 </div>
                                 <div class="header-info-right">
                                    <ul>                                          
+                                        {% if request.user.is_authenticated %}
                                        <li><a href="{% url 'customer_profile' %}">My Account </a></li>
                                        <li><a href="{% url 'product_wishlist' %}">Wish List</a></li>
-                                       <li><a href="cart.html">Shopping</a></li>
                                        <li><a href="{% url 'cart:cart_list' %}">Cart</a></li>
-                                       <li><a href="{% url 'order:checkout' %}">Checkout</a></li>
+                                       {% else %}
+                                       <li><a href="{% url 'vendor:vendor_sign_up' %}">Sell On Lomofy</a></li>
+                                       {% endif %}
                                    </ul>
                                 </div>
                             </div>
@@ -107,23 +111,7 @@
                                                     <li><a href="single-product.html"> Product Details</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="blog.html">Blog</a>
-                                                <ul class="submenu">
-                                                    <li><a href="{% url 'blog' %}">Blog</a></li>
-                                                    <li><a href="{% url 'blog_detail' %}">Blog Details</a></li>
-                                                </ul>
-                                            </li>
-                                            {% comment %} <li><a href="#">Pages</a>
-                                                <ul class="submenu">
-                                                    <li><a href="login.html">Login</a></li>
-                                                    <li><a href="cart.html">Card</a></li>
-                                                    <li><a href="elements.html">Element</a></li>
-                                                    <li><a href="about.html">About</a></li>
-                                                    <li><a href="confirmation.html">Confirmation</a></li>
-                                                    <li><a href="cart.html">Shopping Cart</a></li>
-                                                    <li><a href="">Product Checkout</a></li>
-                                                </ul>
-                                            </li> {% endcomment %}
+                                            <li><a href="{% url 'blog:blog_view' %}">Blog</a></li>
                                             <li><a href="{% url 'contact' %}">Contact</a></li>
                                         </ul>
                                     </nav>

@@ -1,7 +1,10 @@
+from django.contrib import messages
 from django.db.models import Q
 from django.http import Http404, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from product.models import Product
+
+from .models import Contact
 
 
 def home(request):
@@ -49,4 +52,17 @@ def about(request):
 
 
 def contact(request):
+    '''
+    user contact submission form
+    '''
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        subject = request.POST.get('subject')
+        contact = Contact(name=name, email=email, message=message, subject=subject)
+        contact.save()
+        messages.success(request, 'Your message has been sent successfully')
+        return redirect('contact')
+
     return render(request, 'core/contact.html')

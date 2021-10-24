@@ -5,12 +5,14 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.cache import cache_page
 
 from .forms import CommentForm
 from .models import Category, Comment, Post
 
 
 @customer_required
+@cache_page(60 * 2)
 def blog_post_view(request):
     '''
     This view will render all posts & filter categories.
@@ -35,6 +37,7 @@ def blog_post_view(request):
 
 
 @customer_required
+@cache_page(60 * 2)
 def blog_details_view(request, slug):
     '''
     This blog details will show more info about a specific blog post.

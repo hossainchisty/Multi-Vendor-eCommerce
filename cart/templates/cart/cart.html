@@ -19,11 +19,14 @@
   </div>
 </div>
 <!-- slider Area End-->
-{% if messages %} 
-  {% for message in messages %}
-    <button class="delete"></button>
+{% if messages.success %} 
+    {% for message in messages %}
     <div class="notification is-success is-toast">{{ message }}</div>
-  {% endfor %} 
+    {% endfor %} 
+{% else %}
+    {% for message in messages %}
+    <div class="notification is-danger is-toast">{{ message }}</div>
+    {% endfor %} 
 {% endif %}
 <!--================Cart Area =================-->
     {% if cart %}

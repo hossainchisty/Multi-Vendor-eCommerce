@@ -238,11 +238,21 @@
                                 <p>Subscribe news latter</p>
                             </div>
                         </div>
+                        {% if messages.success %} 
+                            {% for message in messages %}
+                            <div class="notification is-success is-toast">{{ message }}</div>
+                            {% endfor %} 
+                        {% else %}
+                            {% for message in messages %}
+                            <div class="notification is-danger is-toast">{{ message }}</div>
+                            {% endfor %} 
+                        {% endif %}
                          <div class="col-xl-5 col-lg-5 col-md-6 ">
                             <div class="latest-subscribe">
-                                <form action="#">
-                                    <input type="email" placeholder="Your email here">
-                                    <button>Shop Now</button>
+                                <form action="{% url 'subscribe' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="email" name="email" placeholder="Your email here">
+                                    <button type="submit">Subscribe</button>
                                 </form>
                             </div>
                         </div>

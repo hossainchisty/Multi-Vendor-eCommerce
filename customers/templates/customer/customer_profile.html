@@ -29,17 +29,10 @@
       >
         <nav class="breadcrumb is-small bg-white" aria-label="breadcrumbs">
           <ul>
-            <li><a href="#">My Profile</a></li>
-            <li class="is-active">
-              <a href="#" aria-current="page">My Orders</a>
-            </li>
-
-            <li class="is-active">
-              <a href="#" aria-current="page">My Reviews</a>
-            </li>
-
-            <li class="is-active">
-              <a href="#" aria-current="page">My Wishlist & Followed Stores</a>
+            <li><a href="{% url 'customer_profile' %}">My Profile</a></li>
+            <li><a href="{% url 'order:customer_order_history' %}">My Orders</a></li>
+            <li><a href="{% url 'customer_review_history' %}">My Reviews</a></li>
+            <li><a href="{% url 'customer_wishlist_and_followed_store' %}">My Wishlist & Followed Stores</a>
             </li>
           </ul>
         </nav>
@@ -58,9 +51,13 @@
           <h3 class="is-size-4 has-text-weight-medium has-text-left-mobile has-text-left">Manage My Account</h3>
       </div>
     </nav>
-    {% if messages %} 
+    {% if messages.success %} 
       {% for message in messages %}
       <div class="notification is-success is-toast">{{ message }}</div>
+      {% endfor %} 
+    {% else %}
+      {% for message in messages %}
+      <div class="notification is-danger is-toast">{{ message }}</div>
       {% endfor %} 
     {% endif %}
 
@@ -92,6 +89,7 @@
           <tr class="th">
           {% for item in orders %}
               <th>Order No.</th>
+              <th>Seller</th>
               <th>Thumbnail</th>
               <th>Product</th>
               <th>Quantity</th>
@@ -100,15 +98,22 @@
        
                    
           <tr>
-              <td>{{item.id}}</td>
+              <td>{{ item.id }}</td>
+              <td>{{ vendor.vendor_name }}</td>
               <td>
-               <figure class="container-fluid image is-96x96">
-                <img src="{{item.product_image.url}}">
+              {% if item.product.image %}
+              <figure class="container-fluid image is-96x96">
+                <img src="{{ item.product.image.url }}">
               </figure> 
+              {% else %}
+              <figure class="container-fluid image is-96x96">
+                <img src="{{ item.product.url }}">
+              </figure>
+              {% endif %}
               </td>
-              <td>{{item.product_title|title}}</td>
-              <td>{{item.product_quantity}}</td>
-              <td>{{item.product_price}}</td>
+              <td>{{ item.product.title|title }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.product.price }}</td>
           </tr>
        
     

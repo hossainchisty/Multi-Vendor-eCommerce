@@ -1,0 +1,26 @@
+[
+    {
+        "model": "newsletter.subscriber",
+        "pk": 1,
+        "fields": {
+            "email": "test1@gmail.com",
+            "confirmed": true
+        }
+    },
+    {
+        "model": "newsletter.subscriber",
+        "pk": 2,
+        "fields": {
+            "email": "test2@gmail.com",
+            "confirmed": true
+        }
+    },
+    {
+        "model": "newsletter.subscriber",
+        "pk": 3,
+        "fields": {
+            "email": "test3@gmail.com",
+            "confirmed": true
+        }
+    }
+]

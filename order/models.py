@@ -17,10 +17,10 @@ class Order(models.Model):
     total_price = models.DecimalField(max_digits=6, decimal_places=2)
 
     isPaid = models.BooleanField(default=False)
-    paid_date = models.DateField(auto_now_add=True)
+    paid_date = models.DateTimeField(auto_now_add=True)
 
     isDelivered = models.BooleanField(default=False)
-    delivered_date = models.DateField(auto_now_add=True)
+    delivered_date = models.DateTimeField(auto_now_add=True)
 
     isCancelled = models.BooleanField(default=False)
     isReturn = models.BooleanField(default=False)

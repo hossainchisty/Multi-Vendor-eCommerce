@@ -1,4 +1,3 @@
-from django.contrib import messages
 from django.shortcuts import redirect, render
 
 from .cart import Cart
@@ -13,7 +12,6 @@ def cart_list(request):
 
     if remove_from_cart:
         cart.remove(remove_from_cart)
-        messages.info(request, 'Product remove from cart!')
         return redirect('cart:cart_list')
 
     if change_quantity:

@@ -1,5 +1,4 @@
 from cart.cart import Cart
-from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import AddToCartForm
@@ -17,9 +16,7 @@ def product_detail(request, category_slug, product_slug):
 
         if form.is_valid():
             quantity = form.cleaned_data['quantity']
-            print(f"Product qty: {quantity}")
             cart.add(product_id=products.id, quantity=quantity, update_quantity=False)
-            messages.success(request, 'Product added to cart!')
             return redirect('cart:cart_list')
     else:
         form = AddToCartForm()

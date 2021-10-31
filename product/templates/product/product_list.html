@@ -12,7 +12,11 @@
 <div class="col-xl-4 col-lg-4 col-md-6">
     <div class="single-product mb-60">
         <div class="product-img">
+            {% if product.image %}
             <img src="{{ product.image.url }}" alt="{{product.title}}">
+            {% else %}
+            <img src="{{ product.url }}" alt="{{product.title}}">
+            {% endif %}
             <div class="new-product">
                {% if product.is_new %}
                 <span>New</span>
@@ -31,8 +35,12 @@
                 </ul>
             </div>
             <br>
-            <a href="#" class="genric-btn primary">Add to cart</a>
-            <a href="{% url 'add_to_wishlist' product.id %}" class="genric-btn primary-border">Add to wishlist</a>
+            <a href="{% url 'product_detail'  product.category.slug product.slug %}" class="genric-btn primary">See details</a>
+            {% if product.wishlist_exist %}
+            <a href="{% url 'add_to_wishlist' product.id %}" class="genric-btn danger-border">Remove from wishlist</a>
+            {% else %}
+             <a href="{% url 'add_to_wishlist' product.id %}" class="genric-btn primary-border">Add to wishlist</a>
+            {% endif %}
         </div>
     </div>
 </div>

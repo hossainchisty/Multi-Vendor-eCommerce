@@ -4,52 +4,87 @@
 {% load static %}
 {% block body %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <!-- slider Area Start-->
-    <div class="slider-area ">
-        <!-- Mobile Menu -->
-        <div class="single-slider slider-height2 d-flex align-items-center" data-background="{% static 'assets/img/hero/category.jpg' %}">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="hero-cap text-center">
-                            <h2>product Details</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- slider Area End-->
+<link
+  href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+  rel="stylesheet"
+/>
     {% if messages %} 
       {% for message in messages %}
-      <button class="delete"></button>
-      <div class="notification is-success is-toast">{{ message }}</div>
-      {% endfor %} 
+        {% if message.tags %}
+          <div class="notification is-danger is-toast">
+            {{ message }}
+          </div>
+        {% endif %}
+        {% if message.tags %}
+          <div class="notification is-{{ message.tags }} is-toast">
+            {{ message }}
+          </div>
+        {% endif %}
+
+      {% endfor %}
     {% endif %}
   <!--================Single Product Area =================-->
-  <div class="product_image_area">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-12">
-          <div class="product_img_slide owl-carousel">
-            <div class="single_product_img">
-              <img src="{{ products.image.url }}" alt="#" class="img-fluid">
-            </div>
-            <div class="single_product_img">
-              <img src="{{ products.image.url }}" alt="#" class="img-fluid">
-            </div>
-            <div class="single_product_img">
-              <img src="{{ products.image.url }}" alt="#" class="img-fluid">
-            </div>
-          </div>
+  <main class="flex items-center p-10 w-full h-full">
+    <div class="pt-16 grid grid-cols-2 gap-8">
+      <div class="flex flex-col justify-start">
+        <div class="flex flex-col w-full object-cover h-4/6 justify-items-start border rounded-lg overflow-hidden"
+          style="min-heigth:320px">
+          {% if products.image %}
+          <img src="{{ products.image.url }}" alt="{{ products.title }}" class="rounded w-full">
+          {% else %}
+          <img src="{{ products.url }}" alt="{{ products.title }}" class="rounded w-full">
+          {% endif %}
+              </div>
         </div>
-        <div class="col-lg-8">
-          <div class="single_product_text text-center">
-            <h3>{{ products.title }}<br>
-              
-            <p>
-                {{ products.description }}
-            </p>
+        <div class="flex flex-col">
+          <div class="flex flex-col gap-4">
+            <h1 class="capitalize text-4xl font-extrabold">{{ products.title }}</h1>
+            <div class="flex">
+              <span class="flex items-center">
+                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                  </path>
+                </svg>
+                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                  </path>
+                 
+                </svg>
+                <span class="text-gray-600 ml-3">{{ products.rating }} Reviews</span>
+              </span>
+              <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
+                <a class="text-gray-500">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                  </svg>
+                </a>
+                <a class="ml-2 text-gray-500">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                  </svg>
+                </a>
+                <a class="ml-2 text-gray-500">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                  </svg>
+                </a>
+              </span>
+          </div>
+            <span class="mr-2 text-gray-900">{{ products.category }}</span>
+            <h2 class="text-3xl">${{ products.price }}</h2>
+            <p class="text-lg text-gray-900">{{ products.description }}</p>
+            <div class="w-full flex-none text-sm flex items-center text-gray-600">
+             
+              <span class="mr-2 text-purple-900">Sold by {{ products.created_by }}</span>
+              <span class="mr-2 text-green-500">In Stock {{ products.countInStock }}</span>
+            </div>
+            <div class="flex items-center gap-4 my-5 cursor-pointer ">
             <form method="POST" action=".">
                     {% csrf_token %}
                   <div class="field has-addons">
@@ -57,36 +92,24 @@
                           <input type="number" name="quantity" value="1" class="input" min="1">
                       </div>
                       
-                      <div class="control">
-                          <button class="button is-primary is-uppercase">Add to cart</button>
-                      </div>
+                      <div class="bg-blue-600 px-5 py-2 text-white rounded-lg w-2/4 text-center">
+                      <button>Add to Cart</button></div>
                   </div>
-            </form>
+            </form>                
+                <a href="{% url 'add_to_wishlist' products.id %}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-400" viewBox="0 0 20 20"
+              fill="currentColor">
+                <path fill-rule="evenodd"
+                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                clip-rule="evenodd" />
+                  </svg>
+                </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+  </main>
   <!--================End Single Product Area =================-->
-   <!-- subscribe part here -->
-   <section class="subscribe_part section_padding">
-      <div class="container">
-          <div class="row justify-content-center">
-              <div class="col-lg-8">
-                  <div class="subscribe_part_content">
-                      <h2>Get promotions & updates!</h2>
-                      <p>Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources credibly innovate granular internal .</p>
-                      <div class="subscribe_form">
-                          <input type="email" placeholder="Enter your mail">
-                          <a href="#" class="btn_1">Subscribe</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-  <!-- subscribe part end -->
-
     {% block footer %}
         {% include 'core/footer.html' %}
     {% endblock footer %}

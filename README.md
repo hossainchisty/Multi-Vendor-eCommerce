@@ -1,19 +1,22 @@
-### Multi vendor e-commerce marketplace platform✨
+### Multi vendor e-commerce marketplace platform with RBAC feature✨
 
-<!-- Key Features:
-Tech Stack: Python, Django
-Technical Requirements:
-## Test Driven Development (TDD)
-Test Driven Development is a software development technique where tests are written first and then the source code is written thereafter.
-## Deployment
-Heroku app is already configured to this repository for *automatic deploys* from any push to the **master** branch. Create a pull request containing your respective changes and wait for merge.
+## Introduction
 
-## Coverage 
-It is a tool used for measuring the effectiveness of tests, showing the percentage of your codebase covered by tests.
-## Continuous Integration
-Continuous integration automates the building, testing and deploying of applications. Software projects, whether created by a single individual or entire teams, typically use continuous integration as a hub to ensure important steps such as unit testing are automated rather than manual processes. -->
+The application is multivendor eCommerce platform with Role-based access control (RBAC) that empowers multiple vendors to sell their products from one storefront. Multivendor store gives shoppers a huge catalog to choose from and provides sellers with a bigger base of ready-to-buy customers.
 
-Working in progress🔨⏳
+## Table Of Contents:
+
+- [💻 Application Overview](docs/application-overview.md)
+- [⚙️ Project Configuration](docs/project-configuration.md)
+- [👁️ Style Guide](docs/style-guide.md)
+- [🗄️ Project Structure](docs/project-structure.md)
+- [📡 API Layer](docs/api-layer.md)
+- [🗃️ State Management](docs/state-management.md)
+- [🧪 Testing](docs/testing.md)
+- [⚠️ Error Handling](docs/error-handling.md)
+- [🔐 Security](docs/security.md)
+- [🌐 Deployment](docs/deployment.md)
+- [📚 Additional Resources](docs/additional-resources.md)
 
 ### Get in touch
 
@@ -41,3 +44,6 @@ Author:
 <a href="https://www.linkedin.com/in/hossainchisty/" target="_blank">Hossain Chisty</a><br>
 If you would like to have my help with your team and product, feel free to contact me. 🤓
 
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

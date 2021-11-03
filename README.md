@@ -1,6 +1,6 @@
 <div align="center">
 
-<h2>Welcome to the Multi vendor e-commerce platform</h2>
+<h1>Welcome to the Multi vendor e-commerce platform</h1>
 
 <a href="https://drawsql.app/backend-/diagrams/multivendor-ecommerce-software">![Lomofy SQL Diagram](https://img.shields.io/badge/Lomofy-Diagram%20-blue)</a>
 <a href="https://open.vscode.dev/hossainchisty/"><img src="https://open.vscode.dev/badges/open-in-vscode.svg" height="25px"></a>

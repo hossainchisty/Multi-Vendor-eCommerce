@@ -1,0 +1,110 @@
+{% extends 'core/_base.html' %} 
+{% block title %}Manage My Order {% endblock %}
+{% load static %}
+{% load humanize %} 
+{% block body %}
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+/>
+<link
+  href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+  rel="stylesheet"
+/>
+<!-- CSS here -->
+<link rel="stylesheet" href="{% static 'assets/css/order_details.css' %}">
+
+<section class="bg-white">
+  <div class="container mx-auto flex items-center flex-wrap pb-12">
+    <div class="card-content">
+        <div class="container">
+          <nav class="breadcrumb is-small bg-white has-arrow-separator" aria-label="breadcrumbs">
+          <ul>
+            <li><a href="{% url 'customer_profile' %}">My Profile</a></li>
+            <li><a href="{% url 'order:customer_order_history' %}">My Orders</a></li>
+            <li><a href="{% url 'customer_review_history' %}">My Reviews</a></li>
+            <li><a href="{% url 'customer_wishlist_and_followed_store' %}">My Wishlist & Followed Stores</a>
+            </li>
+          </ul>
+        </nav>
+        
+        <article class="card">
+            <header class="card-header"> My Orders / Tracking </header>
+            {% for order in order_items %}
+            <div class="card-body">
+                <h6 class="m-2">Order ID: {{order.order.id}}</h6> 
+                <h4 class="m-2">Your package has been delivered. Thank you for shopping at Lomofy!</h4>
+                <article class="card">
+                    <div class="card-body row">
+                        <div class="col"> <strong>Placed on:</strong> <br>{{ order.order.delivered_date  | naturaltime  }} </div>
+                        <div class="col"> <strong>Shipping BY:</strong> <br> {{ order.order.first_name | title }} {{ order.order.last_name }}
+                        <br>| <i class="fa fa-phone"></i> {{ order.order.phone }} </div>
+                        <div class="col"> <strong>Sold by:</strong> <br>{{ order.product.created_by  }} </div>
+                        <div class="col"> <strong>Status:</strong> <br>{{ order.order.status }}</div>
+                        <div class="col"> <strong>Tracking #:</strong> <br> BD045903594059 </div>
+                    </div>
+                </article>
+                <div class="track">
+                    {% if order.order.status == 'Processing' %}
+                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Processing</span> </div>
+                    <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">Shipped</span> </div>
+                    <div class="step"> <span class="icon"> <i class="fa fa-gift"></i> </span> <span class="text">Delivered</span> </div>
+                    {% endif %}
+                    {% if order.order.status == 'Shipped' %}
+                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Processing</span> </div>
+                    <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">Shipped</span> </div>
+                     <div class="step"> <span class="icon"> <i class="fa fa-gift"></i> </span> <span class="text">Delivered</span> </div>
+                    {% endif %}
+                    {% if order.order.status == 'Delivered' %}
+                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Processing</span> </div>
+                    <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">Shipped</span> </div>
+                    <div class="step active"> <span class="icon"> <i class="fa fa-gift"></i> </span> <span class="text">Delivered</span> </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-span-1 bg-white lg:block hidden">
+                <h1 class="py-6 border-b-2 text-xl text-gray-600 px-8">Order Summary</h1>
+                <ul class="py-6 border-b space-y-6 px-8">
+                    <li class="grid grid-cols-6 gap-2 border-b-1">
+                        <div class="col-span-1 self-center">
+                             {% if product.image %}
+                            <img src="{{ order.product.image.url }}" alt="{{ order.product.title }}" class="rounded w-full">
+                            {% else %}
+                            <img src="{{ order.product.url }}" alt="{{ order.product.title }}" class="rounded w-full">
+                            {% endif %}
+                        </div>
+                        <div class="flex flex-col col-span-3 pt-2">
+                            <span class="text-gray-600 text-md font-semi-bold">
+                            <a href="{% url 'product_detail'  order.product.category.slug order.product.slug %}">{{ order.product.title }}</a></span>
+                            
+                        </div>
+                        <div class="col-span-2 pt-3">
+                            <div class="flex items-center space-x-2 text-sm justify-between">
+                                <span class="text-gray-400">{{ order.quantity }} x €{{ order.product.price }}</span>
+                            </div>
+                            <div class="flex items-center gap-4 my-3 cursor-pointer">
+                                <a  class="bg-blue-600 px-2 py-2 text-white rounded-lg w-2/2 text-center" href="{% url 'customer_product_review' %}">WRITE A REVIEW</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="font-semibold text-xl px-8 flex justify-between py-8 text-gray-600">
+                    <span>Total</span>
+                    <span>€{{ order.get_total_item_price }}</span>
+                </div>
+            </div>
+            {% endfor %}
+             <a href="{% url 'order:customer_order_history' %}" class="btn btn-warning cursor-pointer" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
+            </div>
+        </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% block footer %}
+    {% include 'core/footer.html' %}
+{% endblock footer %}
+
+{% endblock body %}

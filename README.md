@@ -1,5 +1,30 @@
-### Multi vendor e-commerce marketplace platform with RBAC feature✨
+<div align="center">
 
+<h2>Welcome to the Multi vendor e-commerce platform</h2>
+
+<a href="https://drawsql.app/backend-/diagrams/multivendor-ecommerce-software">![Lomofy SQL Diagram](https://img.shields.io/badge/Lomofy-Diagram%20-blue)</a>
+<a href="https://open.vscode.dev/hossainchisty/"><img src="https://open.vscode.dev/badges/open-in-vscode.svg" height="25px"></a>
+
+
+</div>
+
+<br/>
+
+## The Lomofy Diagram
+
+--> *Preview :*
+
+<div align="center">
+  <a href="https://drawsql.app/backend-/diagrams/multivendor-ecommerce-software">
+<img width="80%" align="center" src="./img/drawSQL.png"/>
+  </a>
+</div>
+
+<br/>
+
+--> *Full View:*
+
+You can see clearly the diagram at :&nbsp; <a href="https://drawsql.app/backend-/diagrams/multivendor-ecommerce-software"><img align="center" src="https://img.shields.io/badge/Lomofy-SQL%20Diagram%20-orange"></a>
 ## Introduction
 
 The application is multivendor eCommerce platform with Role-based access control (RBAC) that empowers multiple vendors to sell their products from one storefront. Multivendor store gives shoppers a huge catalog to choose from and provides sellers with a bigger base of ready-to-buy customers.
@@ -18,7 +43,7 @@ The application is multivendor eCommerce platform with Role-based access control
 - [🌐 Deployment](docs/deployment.md)
 - [📚 Additional Resources](docs/additional-resources.md)
 
-### Get in touch
+## Get in touch
 
 <a class="header-badge" target="_blank" href="https://www.linkedin.com/in/hossainchisty/">
   <img src="https://img.shields.io/badge/style--5eba00.svg?label=LinkedIn&logo=linkedin&style=social">

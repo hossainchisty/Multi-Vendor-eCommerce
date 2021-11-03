@@ -1,0 +1,173 @@
+{% extends 'core/_base.html' %}
+{% block title %}Checkout {% endblock %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+<!-- slider Area Start-->
+  <div class="slider-area ">
+    <!-- Mobile Menu -->
+    <div class="single-slider slider-height2 d-flex align-items-center" data-background="{% static 'assets/img/hero/category.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                        <h2>Checkout</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- slider Area End-->
+  {% if messages %} 
+    {% for message in messages %}
+      <button class="delete"></button>
+      <div class="notification is-success is-toast">{{ message }}</div>
+    {% endfor %} 
+  {% endif %}
+  <!--================Checkout Area =================-->
+  <section class="checkout_area section_padding">
+    <div class="container">
+      
+      <div class="billing_details">
+        <div class="row">
+          <div class="col-lg-8">
+            <h3>Billing Details</h3>
+            <form class="row contact_form" method="POST" id="payment-form">
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                  <div class="notification is-danger">
+                      {{ form.non_field_errors}}
+                  </div>
+                {% endif %}
+
+                {% if form.errors %}
+                  <div class="notification is-danger">
+                      <ul>
+                          {% for field in form %}
+                              {% for error in field.errors %}
+                                  <li><strong>{{ field.label }}: </strong>{{ error }}</li>
+                              {% endfor %}
+                          {% endfor %}
+                      </ul>
+                  </div>
+                {% endif %}
+
+                <div class="col-md-6 form-group p_star">
+                  <input type="text" class="form-control" id="first" name="first_name" />
+                  <span class="placeholder" data-placeholder="First name"></span>
+                </div>
+                <div class="col-md-6 form-group p_star">
+                  <input type="text" class="form-control" id="last" name="last_name" />
+                  <span class="placeholder" data-placeholder="Last name"></span>
+                </div>
+                <div class="col-md-6 form-group p_star">
+                  <input type="text" class="form-control" id="email" name="email" placeholder="Email" />
+                </div>
+                <div class="col-md-6 form-group p_star">
+                  <input type="text" class="form-control" id="number" name="phone" placeholder="Phone"/>
+              
+                </div>
+        
+                <div class="col-md-12 form-group p_star">
+                  <input type="text" class="form-control" id="add1" name="address" placeholder="Address"/>
+                </div>
+
+                <div class="col-md-12 form-group">
+                  <input type="text" class="form-control" id="zip" name="zipcode" placeholder="Postcode/ZIP" />
+                </div>   
+                
+                <div class="col-md-12 form-group">
+                  <input type="text" class="form-control" id="zip" name="place" placeholder="Place" />
+                </div>
+
+          </div>
+          {% if cart %}
+          <div class="col-lg-4">
+            <div class="order_box">
+              {% for item in cart %}
+              <h2>Your Order</h2>
+              <ul class="list">
+                <li>
+                  <a href="#">Product
+                    <span>Total</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">{{ item.product.title }}
+                    <span class="middle">x {{ item.quantity }}</span>
+                    <span class="last">${{ item.total_price }}</span>
+                  </a>
+                </li>
+              </ul>
+              <ul class="list list_2">
+                <li>
+                  <a href="#">Total
+                    <span>${{ cart.get_total_price }}</span>
+                  </a>
+                </li>
+              </ul>
+            
+            <h2 class="subtitle">Payment information</h2>
+            {% endfor %}
+            <div id="card-element">
+                <!-- A Stripe Element will be inserted here -->
+            </div>
+              
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="notification is-danger">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            
+            <div class="field">
+                <div class="control">
+                    <input type="submit" class="button is-dark mt-4 is-uppercase" value="Checkout">
+                </div>
+            </div>
+            </form>
+            </div>
+          </div>
+          {% else %}
+          <p>You don't have any products in your cart! <a class="is-underlined is-uppercase has-text-weight-bold" href="{% url 'home' %}">Shopping</a></p></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        var stripe = Stripe('{{ stripe_pub_key }}');
+        var elements = stripe.elements();
+
+        var card = elements.create('card');
+
+        card.mount('#card-element');
+
+        var form = document.getElementById('payment-form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            stripe.createToken(card).then(function(result) {
+                if (result.error) {
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    stripeTokenHandler(result.token);
+                }
+            });
+        });
+
+        function stripeTokenHandler(token) {
+            var form = document.getElementById('payment-form');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'stripe_token');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+
+            form.submit();
+        }
+    </script>
+  <!--================End Checkout Area =================-->
+{% endblock body %}

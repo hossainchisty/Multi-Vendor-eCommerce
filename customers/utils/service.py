@@ -1,8 +1,9 @@
+import threading
+
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
-import threading
 
 
 class EmailThread(threading.Thread):
@@ -33,4 +34,5 @@ def send_welcome_mail(request, user):
         to=[request.user.customer.email],
     )
     mail.content_subtype = "HTML"
+    mail.send()
     return None

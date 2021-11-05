@@ -81,9 +81,9 @@ class CustomerTestCase(TestCase):
         self.assertEqual(str(customer), "John Doe")
 
     def test_customer_full_name_method(self):
-        """ Test customer get_user_full_name() method """
+        """ Test customer get_user_full_name method """
         customer = Customer.objects.get(full_name="John Doe")
-        actual = customer.get_user_full_name()
+        actual = customer.get_user_full_name
         excpected = "John Doe"
         self.assertEqual(actual.strip(), excpected)
 

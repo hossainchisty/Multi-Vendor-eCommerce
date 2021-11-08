@@ -1,5 +1,5 @@
 {% extends 'core/_base.html' %} 
-{% block title %}Profile {% endblock %}
+{% block title %}Manage My Account {% endblock %}
 {% load static %} 
 {% block body %}
 <link
@@ -27,7 +27,7 @@
           py-3
         "
       >
-        <nav class="breadcrumb is-small bg-white" aria-label="breadcrumbs">
+        <nav class="breadcrumb is-small bg-white has-succeeds-separator" aria-label="breadcrumbs">
           <ul>
             <li><a href="{% url 'customer_profile' %}">My Profile</a></li>
             <li><a href="{% url 'order:customer_order_history' %}">My Orders</a></li>
@@ -36,47 +36,30 @@
             </li>
           </ul>
         </nav>
-        <a
-          class="
-            uppercase
-            tracking-wide
-            no-underline
-            hover:no-underline
-            font-bold
-            text-gray-800 text-xl
-          "
-          href="#"
-        >
         </a>
-          <h3 class="is-size-4 has-text-weight-medium has-text-left-mobile has-text-left">Manage My Account</h3>
+          <h3 class="is-size-4 font-extrabold md:text-lg has-text-left-mobile has-text-left">Manage My Account</h3>
       </div>
     </nav>
-    {% if messages.success %} 
+    {% if messages %} 
       {% for message in messages %}
       <div class="notification is-success is-toast">{{ message }}</div>
-      {% endfor %} 
-    {% else %}
-      {% for message in messages %}
-      <div class="notification is-danger is-toast">{{ message }}</div>
       {% endfor %} 
     {% endif %}
 
     <div class="card-content">
         <div class="media">
           <div class="media-left">
-              <figure class="image is-128x128">
-                <img
-                  class="is-rounded"
-                  src="{{ customer.image.url }}"
-                />
-              </figure>
+            <div class="relative w-24 h-24">
+              <img class="rounded-full border border-gray-100 shadow-sm" src="{{ customer.image.url }}" alt="{{customer.full_name}}" />
+              <div class="absolute top-0 right-0 h-6 w-6 my-1 border-4 border-white rounded-full bg-green-400 z-2"></div>
+            </div>
             </div>
             <div class="media-content">
               <p class="title is-4">{{customer.full_name}}</p>
               <p class="subtitle is-6">{{customer.email}}</p>
               <hr>
-              <h3 class="title is-size-5 has-text-weight-large">Shipping Address</h3>
-              <p class="subtitle is-size-6">{{customer.address}} - {{customer.country.name}}
+              <h3 class="font-extrabold md:text-lg">Shipping Address</h3>
+              <p class="subtitle is-size-6 mt-2">{{customer.address}} - {{customer.country.name}}
               <br>{{customer.phone_number}}</p>
 
               <a  href="{% url 'customer_profile_update'%}" class="button is-dark is-small no-underline hover:no-underline">Edit</a>
@@ -84,22 +67,21 @@
           </div>
         </div>
         <div class="container">
-        <h3 class="is-size-4 has-text-weight-medium">Recent Orders</h3>
+        <h3 class="font-extrabold md:text-lg">Recent Orders</h3>
         <table class="table has-text-centered">
           <tr class="th">
           {% for item in orders %}
-              <th>Order No.</th>
-              <th>Seller</th>
-              <th>Thumbnail</th>
-              <th>Product</th>
-              <th>Quantity</th>
-              <th>Price</th>
+              <th>Order #</th>
+              <th>Placed On</th>
+              <th>Items</th>
+              <th>Total</th>
+              <th></th>
           </tr>
        
                    
           <tr>
               <td>{{ item.id }}</td>
-              <td>{{ vendor.vendor_name }}</td>
+              <td>{{ item.order.delivered_date }}</td>
               <td>
               {% if item.product.image %}
               <figure class="container-fluid image is-96x96">
@@ -111,12 +93,10 @@
               </figure>
               {% endif %}
               </td>
-              <td>{{ item.product.title|title }}</td>
-              <td>{{ item.quantity }}</td>
-              <td>{{ item.product.price }}</td>
+              <td>৳{{ item.product.price }}</td>
+              <td class="pt-5"><a href="{% url 'order:order_details' item.id %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">MANAGE</a></td>
           </tr>
        
-    
           {% endfor %}
         </table>
       </div>

@@ -1,0 +1,83 @@
+{% extends 'core/_base.html' %} 
+{% block title %}Profile {% endblock %}
+{% load static %} 
+{% block body %}
+<link
+  href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+/>
+
+<section class="bg-white">
+  <div class="container mx-auto flex items-center flex-wrap pt-4 pb-12">
+    <nav id="store" class="w-full z-30 top-0 px-6 py-1">
+      <div
+        class="
+          w-full
+          container
+          mx-auto
+          flex flex-wrap
+          items-center
+          justify-between
+          mt-0
+          px-2
+          py-3
+        "
+      >
+        <nav class="breadcrumb is-small bg-white" aria-label="breadcrumbs">
+          <ul>
+            <li><a href="{% url 'customer_profile' %}">My Profile</a></li>
+            <li><a href="{% url 'order:customer_order_history' %}">My Orders({{order_items.count}})</a></li>
+            <li><a href="{% url 'order:customer_returns' %}">My Returns</a></li>
+            <li><a href="{% url 'order:customer_cancellation' %}">My Cancellations</a></li>
+            <li><a href="{% url 'customer_wishlist_and_followed_store' %}">My Wishlist & Followed Stores</a>
+            </li>
+          </ul>
+        </nav>
+          <h3 class="is-size-4 has-text-weight-medium has-text-left-mobile has-text-left">Manage My Account</h3>
+      </div>
+    </nav>
+    {% if messages %} 
+      {% for message in messages %}
+      <div class="notification is-success is-toast">{{ message }}</div>
+      {% endfor %} 
+    {% endif %}
+
+    <div class="card-content">
+        <div class="container">
+        <h3 class="is-size-4 has-text-weight-medium">My Orders</h3>
+        <table class="table has-text-centered">
+          <tr class="th">
+          {% for item in order_items %}
+              <th>Order No.</th>
+              <th>Thumbnail</th>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Price</th>
+          </tr>
+       
+                   
+          <tr>
+              <td>{{ item.id }}</td>
+              <td>
+               <figure class="container-fluid image is-96x96">
+                <img src="{{ item.product_image.url }}">
+              </figure> 
+              </td>
+              <td>{{ item.product_title|title }}</td>
+              <td>{{ item.product_quantity }}</td>
+              <td>{{ item.product_price |floatformat:2 }}</td>
+          </tr>
+       
+    
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+{% endblock body %}

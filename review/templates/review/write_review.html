@@ -1,0 +1,89 @@
+{% extends 'core/_base.html' %} 
+{% block title %}Send us your feedback {% endblock %}
+{% load static %}
+{% load crispy_forms_tags %} 
+{% load humanize %} 
+{% block body %}
+<link
+  href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+/>
+
+<section class="bg-white">
+  <div class="container mx-auto flex items-center flex-wrap pt-4 pb-12">
+    <nav id="store" class="w-full z-30 top-0 px-6 py-1">
+      <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
+        <nav class="breadcrumb is-small bg-white" aria-label="breadcrumbs">
+          <ul>
+            <li><a href="{% url 'customer_profile' %}">My Profile</a></li>
+            <li><a href="{% url 'order:customer_order_history' %}">My Orders</a></li>
+            <li><a href="{% url 'customer_review_history' %}">History</a></li> 
+            <li><a href="{% url 'customer_to_be_reviewed' %}">To Be Reviewed</a></li>
+            <li><a href="{% url 'customer_wishlist_and_followed_store' %}">My Wishlist & Followed Stores</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </nav>
+    
+      <div class="container">
+        <h3 class="is-size-4 has-text-weight-medium">Write Review</h3>
+        
+        {% for item in product %}
+        <p class="mt-4">{{ item.get_delivery_status }} on <span class="text-black">{{ item.get_delivery_date | naturaltime }}</span></p>
+        <p>Sold by <span class="text-black">{{ item.product.created_by }}</span></p>
+        <div class="py-2">
+          <div class="flex max-w-md rounded-lg overflow-hidden">
+              {% if item.product.image %}
+              <div class="w-1/3 bg-cover" style="background-image: url('{{ item.product.image.url }}')">
+              </div>
+              {% else %}
+              <div class="w-1/3 bg-cover" style="background-image: url('{{ item.product.url }}')">
+              </div> 
+              {% endif %}
+              <div class="w-2/3 p-4">
+                <h1 class="text-gray-900 font-bold text-2xl">{{ item.product.title}}</h1>
+                <div class="flex item-center justify-between mt-3">
+                  <h1 class="text-gray-700 font-bold text-xl">${{ item.product.price }}</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+      {% endfor %}
+        <table class="table has-text-centered">
+          <form method="POST" class="w-full max-w-lg" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="flex flex-wrap -mx-3 mb-6 mt-5">   
+              <div class="w-full px-3">
+                {{ form|crispy }} 
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold" for="grid-password">
+                  Review detail
+                </label>
+                <textarea class=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none" name="product_review_text" placeholder="Please share your feedback about the product: Was the product as described? What is the qulity like?"></textarea>
+              </div>
+
+
+            <div class="w-full px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                  Rate your Rider:
+                </label>
+                <textarea class=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none" name="rider_rate_text" id="message" placeholder="How is your overall experience with the seller?"></textarea>
+            </div>
+          
+           
+            <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-back py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+            Submit
+            </button>
+        </form>
+        </div>
+       <table>
+      </div>
+  
+    </div>
+  </div>
+</section>
+{% endblock body %}

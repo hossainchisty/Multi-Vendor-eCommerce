@@ -1,0 +1,74 @@
+{% extends 'core/_base.html' %} 
+{% block title %}Unreview {% endblock %}
+{% load static %} 
+{% block body %}
+<link
+  href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+/>
+
+<section class="bg-white">
+  <div class="container mx-auto flex products-center flex-wrap pt-4 pb-12">
+    <nav id="store" class="w-full z-30 top-0 px-6 py-1">
+      <div class="w-full container mx-auto flex flex-wrap products-center justify-between mt-0 px-2 py-3">
+        <nav class="breadcrumb is-small bg-white" aria-label="breadcrumbs">
+          <ul>
+            <li><a href="{% url 'customer_profile' %}">My Profile</a></li>
+            <li><a href="{% url 'order:customer_order_history' %}">My Orders</a></li>
+            <li><a href="{% url 'customer_review_history' %}">History</a></li>
+            <li class="is-active">
+              <a href="{% url 'customer_wishlist_and_followed_store' %}" aria-current="page">My Wishlist & Followed Stores</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </nav>
+
+    <div class="card-content">
+        <div class="container">
+        <h3 class="is-size-4 has-text-weight-medium">My Reviews</h3>
+          <p>Your pending review</p>
+        {% for review in unreview_product %}
+        <table class="table has-text-centered">
+          <tr class="th">
+              <th></th>
+              <th>Item</th>
+              <th>Price</th>
+              <th></th>
+          </tr>
+      
+          <tr>
+              {% if review.product.image %}
+              <td>
+                <figure class="container-fluid image is-96x96">
+                  <img src="{{ review.product.image.url }}">
+                </figure>  
+              </td>
+              {% else %}
+              <td>
+                <figure class="container-fluid image is-96x96">
+                  <img src="{{ review.product.url }}">
+                </figure>
+              </td>
+              {% endif %}
+              <td>
+              <a>{{ review.product.title|title }}</a></td>
+              <td>{{ review.product.price }}</td>                         
+              <td>
+              <div class="flex items-center gap-4 my-3 cursor-pointer">
+                <a  class="bg-blue-600 px-2 py-2 text-white rounded-lg w-2/2 text-center" href="{% url 'customer_product_review' %}">WRITE A REVIEW</a>
+              </div>
+              </td>
+          </tr>
+        </table>
+        {% endfor %}
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+{% endblock body %}

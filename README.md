@@ -1,14 +1,11 @@
-<div align="center">
+# Multi vendor e-commerce platform🛒
 
-<h1>Welcome to the Multi vendor e-commerce platform</h1>
-
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+[![CI](https://github.com/alan2207/bulletproof-react/actions/workflows/ci.yml/badge.svg)](https://github.com/alan2207/bulletproof-react/actions/workflows/ci.yml)
 <a href="https://drawsql.app/backend-/diagrams/multivendor-ecommerce-software">![Lomofy SQL Diagram](https://img.shields.io/badge/Lomofy-Diagram%20-blue)</a>
-<a href="https://open.vscode.dev/hossainchisty/"><img src="https://open.vscode.dev/badges/open-in-vscode.svg" height="25px"></a>
 
-
-</div>
-
-<br/>
+A scalable advance multi vendor ecommerce software application with RBAC feature.
+#### Build with ❤️ By `Hossain Chisty`
 
 ## The Lomofy Diagram
 

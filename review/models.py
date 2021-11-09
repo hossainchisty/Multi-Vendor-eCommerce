@@ -1,16 +1,16 @@
 from cloudinary.models import CloudinaryField
+
 from customers.models import Customer
 from django.db import models
-from order.models import OrderItem
+from django.utils.translation import gettext as _
 from model.common_fields import BaseModel
 from product.models import Product
-from django.utils.translation import gettext as _
 
 
 class Review(BaseModel):
     """ Review model for products """
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
 
     class Star(models.IntegerChoices):
         VS = 5, _('Very satisfied')
@@ -22,7 +22,7 @@ class Review(BaseModel):
     star = models.PositiveSmallIntegerField(
         _("stars"), choices=Star.choices, default=5)
 
-    reviewImage = CloudinaryField('image')
+    reviewImage = CloudinaryField('image', null=True, blank=True)
 
     feedback = models.TextField(
         help_text="Please share your feedback about the product was the product as described? What is the quality like?",
@@ -32,11 +32,9 @@ class Review(BaseModel):
         null=True,
         blank=True,
     )
-    order_product = models.OneToOneField(
-        OrderItem, verbose_name=_("order product"), on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.star)
+        return f"Customer: {self.customer} - Product: {self.product} Rating: - {self.star}"
 
     class Meta:
         ordering = ('-star',)

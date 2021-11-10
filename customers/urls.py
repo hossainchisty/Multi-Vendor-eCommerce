@@ -14,4 +14,7 @@ urlpatterns = [
     path('change/password/', views.change_password_view, name='change_password'),
     path('profile/update/', views.CustomerProfileUpdate, name='customer_profile_update'),
 
+
+    path('wishlist/followed/store/', views.customerWishlistAndFollowedStore, name='customer_wishlist_and_followed_store'),
+
 ]

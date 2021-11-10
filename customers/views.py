@@ -5,8 +5,10 @@ from django.contrib.auth import (
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.shortcuts import redirect, render
-from order.models import OrderItem
-
+from order.models import Order, OrderItem
+from product.models import Product
+from review.models import Review
+from vendor.models import Vendor
 
 from .decorators import customer_required
 from .forms import CustomerSignUpForm, CustomerUpdateForm
@@ -14,26 +16,37 @@ from .utils import service
 
 
 @customer_required
-@login_required(login_url='customer_sign_in')
+def customerWishlistAndFollowedStore(request):
+    ''' customer wishlist and followed store.'''
+    return render(request, 'customer/wishlist_and_followed_store.html')
+
+
+@customer_required
 def CustomerProfile(request):
-    # product = Product.objects.filter(created_by=vendor)
-    order = OrderItem.objects.all()
+    ''' customer profile .'''
+    '''
+    TODO:
+        1. filter who is the seller of projucts
+    '''
+    # vendor = Vendor.objects.all()
+    # vendor_shop = OrderItem.objects.filter(vendor=vendor)
+    # print(vendor_shop)
+
+    order = OrderItem.objects.filter(order__customer=request.user.customer)
 
     context = {
         'customer': request.user.customer,
         'orders': order,
-        # 'products': product,
     }
 
     return render(request, 'customer/customer_profile.html', context)
 
 
-@customer_required
-@login_required(login_url='customer_sign_in')
+@ customer_required
 def CustomerProfileUpdate(request):
     ''' Update customer profile '''
     if request.method == 'POST':
-        form = CustomerUpdateForm(request.POST, instance=request.user.customer)
+        form = CustomerUpdateForm(request.POST, request.FILES, instance=request.user.customer)
         if form.is_valid():
             form.save()
             messages.success(request, 'Your profile was successfully updated!')
@@ -65,7 +78,6 @@ def CustomerSignUpView(request):
 
 
 @customer_required
-@login_required(login_url='customer_sign_in')
 def change_password_view(request):
     '''A form for allowing customer to change with old password '''
     if request.method == "POST":

@@ -1,8 +1,12 @@
 {% extends 'core/_base.html' %} 
-{% block title %}Sign Up As {{user_type|title}}{% endblock %}
+{% block title %}Sign Up{% endblock %}
 {% load static %} 
-{% load crispy_forms_tags %} 
+{% load tailwind_filters %}
 {% block body %}
+<link
+  href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+  rel="stylesheet"
+/>
 <!-- slider Area Start-->
 <div class="slider-area">
   <!-- Mobile Menu -->
@@ -22,17 +26,36 @@
   </div>
 </div>
 <!-- slider Area End-->
-
+{% if messages %} 
+  {% for message in messages %}
+  <div class="notification is-success is-toast">{{ message }}</div>
+  {% endfor %} 
+{% endif %}
 <!--================Signed up Area Start=================-->
 <section class="login_part section_padding">
   <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 col-md-6">
+        <div class="login_part_text text-center">
+          <div class="login_part_text_iner">
+            <h2>New to our Shop?</h2>
+            <p>
+              There are advances being made in science and technology everyday,
+              and a good example of this is the
+            </p>
+            <a href="{% url 'customer_sign_up' %}" class="btn_3"
+              >Create an Account</a
+            >
+          </div>
+        </div>
+      </div>
       <div class="col-lg-6 col-md-6">
         <div class="login_part_form">
           <div class="login_part_form_iner">
             <h3>Welcome!<br />Please Sign Up now</h3>
             <form action="#" method="POST">
               {% csrf_token %}
-              {{ form }}
+              {{ form|crispy }}
               <div class="col-md-12 form-group">
                 <div class="creat_account d-flex align-items-center">
                   <input type="checkbox" id="f-option" name="selector" />

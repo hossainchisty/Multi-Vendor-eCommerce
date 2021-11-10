@@ -1,5 +1,5 @@
 {% extends 'core/_base.html' %} 
-{% block title %}Profile {% endblock %}
+{% block title %}Manage My Account {% endblock %}
 {% load static %} 
 {% load crispy_forms_tags %}
 {% block body %}
@@ -14,6 +14,23 @@
 
 <section class="bg-white">
   <div class="container mx-auto flex items-center flex-wrap pt-4 pb-12">
+    <nav id="store" class="w-full z-30 top-0 px-6">
+      <div
+        class="
+          w-full
+          container
+          flex flex-wrap
+          items-center
+          justify-between
+        "
+      >
+        <nav class="breadcrumb is-small bg-white" aria-label="breadcrumbs">
+          <ul>
+            <li><a href="">Unsubscribe to our Newsletter</a></li>
+          </ul>
+        </nav>
+      </div>
+    </nav>
     <style>
         #div_id_address {
             margin-top: 2rem;

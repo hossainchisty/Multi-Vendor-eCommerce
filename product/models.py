@@ -61,7 +61,10 @@ class Product(BaseModel):
         '''
         Check if the product is in the wishlist
         '''
-        return Product.objects.filter(wishlist=self.customer).exists()
+        if self.customer:
+            return self.wishlist.filter(id=self.customer.id).exists()
+        else:
+            return False
 
     @property
     def imageURL(self):

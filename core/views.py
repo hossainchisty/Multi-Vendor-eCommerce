@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.http import Http404, JsonResponse
 from django.shortcuts import redirect, render
+from django.views.decorators.cache import cache_page
 from product.models import Product
 
 from .models import Contact
@@ -12,6 +13,7 @@ def home(request):
     return render(request, 'core/home.html', {'products': products})
 
 
+@cache_page(60 * 60)
 def search_api(request):
     ''' Search API for autocomplete '''
     queryset = request.GET.get('query')
@@ -36,6 +38,7 @@ def search_api(request):
         raise Http404
 
 
+@cache_page(60 * 60)
 def search(request):
     ''' redirect search result  '''
     queryset = request.GET.get('query')

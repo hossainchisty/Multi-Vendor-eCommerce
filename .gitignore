@@ -40,10 +40,10 @@ pytestdebug.log
 
 
 # Django stuff:
-*.log
-db.sqlite3
-*db.sqlite3
-db.sqlite3-journal
+# *.log
+# db.sqlite3
+# *db.sqlite3
+# db.sqlite3-journal
 
 cart/__pycache__/
 core/__pycache__/
@@ -75,9 +75,13 @@ venv.bak/
 cache/
 
 # other stuff
-static/assets/img
-static/assets/js
-extra.html
 TODO.feature
 Requirement Engineering.md
 note.md
+TestCase.feature
+TestCase.md
+TODO.md
+core/management/commands/_private.py
+config/nginx.conf
+Project/secret_settings.py
+vendor/test/test_vendor_urls.py

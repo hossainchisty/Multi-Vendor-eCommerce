@@ -5,6 +5,7 @@ from customers.decorators import customer_required
 from django.conf import settings
 from django.contrib import messages
 from django.shortcuts import redirect, render
+from django.views.decorators.cache import cache_page
 from order.models import Order, OrderItem
 
 from .forms import CheckoutForm
@@ -13,6 +14,7 @@ from .utilities import order_checkout
 
 
 @customer_required
+@cache_page(60 * 5)
 def customerReturns(request):
     ''' customer order return history.'''
     return_products = OrderItem.objects.filter(customer=request.user.customer, order__isReturn=True)
@@ -20,6 +22,7 @@ def customerReturns(request):
 
 
 @customer_required
+@cache_page(60 * 6)
 def customerCancellations(request):
     ''' customer order cancellation history.'''
     cancel_products = OrderItem.objects.filter(customer=request.user.customer, order__isCancelled=True)
@@ -27,6 +30,7 @@ def customerCancellations(request):
 
 
 @customer_required
+@cache_page(60 * 2)
 def customerOrderHistory(request):
     ''' customer oder purchased order history. '''
     orders = Order.objects.filter(customer=request.user.customer).order_by('-id')
@@ -76,6 +80,7 @@ def checkout(request):
 
 
 @customer_required
+@cache_page(60 * 60)
 def order_complete(request):
     ''' customer ordered complete details.'''
     for item in Cart(request):
@@ -86,6 +91,7 @@ def order_complete(request):
 
 
 @customer_required
+@cache_page(60 * 60)
 def order_details(request, order_id):
     ''' customer purchased order details. '''
     order = Order.objects.get(id=order_id)

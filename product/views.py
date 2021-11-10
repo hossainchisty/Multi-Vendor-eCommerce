@@ -1,10 +1,12 @@
 from cart.cart import Cart
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.cache import cache_page
 
 from .forms import AddToCartForm
 from .models import Product
 
 
+@cache_page(60 * 6)
 def product_detail(request, category_slug, product_slug):
     '''	Product detail & add to cart view '''
     cart = Cart(request)

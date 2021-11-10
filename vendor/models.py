@@ -25,7 +25,7 @@ class Vendor(BaseModel):
     address = models.TextField(null=True)
 
     def __str__(self):
-        return f'Owner - {self.owner_name.capitalize()} Store name - `{self.vendor_name.capitalize()}`'
+        return f'{self.vendor_name}'
 
     class Meta:
         verbose_name_plural = "Vendors"

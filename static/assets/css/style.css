@@ -226,20 +226,7 @@ p {
 }
 
 
-/* line 38, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_common.scss */
-.bg-img-1 {
-  background-image: url('static/assets/img/slider/slider-img-1.jpg');
-}
 
-/* line 41, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_common.scss */
-.bg-img-2 {
-  background-image: url('static/assets/img/background-img/bg-img-2.jpg');
-}
-
-/* line 44, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_common.scss */
-.cta-bg-1 {
-  background-image: url('static/assets/img/background-img/bg-img-3.jpg');
-}
 
 /* line 49, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_common.scss */
 .img {
@@ -6781,67 +6768,6 @@ input:focus {
   background-color: #222222;
 }
 
-/* line 1, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_bradcam.scss */
-.breadcam_bg {
-  background-image: url(../img/banner/bradcam.png);
-}
-
-/* line 4, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_bradcam.scss */
-.breadcam_bg_1 {
-  background-image: url(../img/banner/bradcam2.png);
-}
-
-/* line 7, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_bradcam.scss */
-.breadcam_bg_2 {
-  background-image: url(../img/banner/bradcam3.png);
-}
-
-/* line 10, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_bradcam.scss */
-.bradcam_area {
-  background-size: cover;
-  background-position: center center;
-  padding: 160px 0;
-  background-position: bottom;
-  background-repeat: no-repeat;
-}
-
-@media (max-width: 767px) {
-  /* line 10, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_bradcam.scss */
-  .bradcam_area {
-    padding: 150px 0;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  /* line 10, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_bradcam.scss */
-  .bradcam_area {
-    padding: 150px 0;
-  }
-}
-
-/* line 22, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_bradcam.scss */
-.bradcam_area h3 {
-  font-size: 50px;
-  color: #fff;
-  font-weight: 900;
-  margin-bottom: 0;
-  font-family: "Playfair Display", serif;
-  text-transform: capitalize;
-}
-
-@media (max-width: 767px) {
-  /* line 22, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_bradcam.scss */
-  .bradcam_area h3 {
-    font-size: 30px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  /* line 22, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_bradcam.scss */
-  .bradcam_area h3 {
-    font-size: 40px;
-  }
-}
 
 /* line 38, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_bradcam.scss */
 .popup_box {

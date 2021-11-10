@@ -1,10 +1,12 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
-from product.models import Product
-from django.contrib import messages
 from customers.decorators import customer_required
+from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
+from django.views.decorators.cache import cache_page
+from product.models import Product
 
 
+@cache_page(60 * 5)
 @customer_required
 def product_wishlist(request):
     ''' Display the products in the wishlist '''

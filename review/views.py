@@ -1,12 +1,14 @@
 from customers.decorators import customer_required
 from django.contrib import messages
 from django.shortcuts import redirect, render
+from django.views.decorators.cache import cache_page
 from order.models import OrderItem
 from review.models import Review
 
 from .forms import ReviewForm
 
 
+@cache_page(60 * 60)
 @customer_required
 def customerReviewHistory(request):
     ''' customer purchased product review history.'''
@@ -14,6 +16,7 @@ def customerReviewHistory(request):
     return render(request, 'review/review.html', {'reviews': reviews})
 
 
+@cache_page(60 * 60)
 @customer_required
 def toBeReviewed(request):
     ''' customer who hasn't Reviewed product.'''

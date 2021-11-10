@@ -13,6 +13,9 @@ import cloudinary.api
 import cloudinary.uploader
 import django_heroku
 
+# import sentry_sdk
+# from sentry_sdk.integrations.django import DjangoIntegration
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # cloudinary configration
@@ -21,9 +24,28 @@ cloudinary.config(cloud_name="hossainchisty", api_key="958916513788356",
 
 SECRET_KEY = 'django-insecure-aw5k1oe@$nupmyzx+u1$+)a#@*b8ltdkp+q=&pg5q@=fl&8ims'
 
+
+STRIPE_PUB_KEY = 'pk_test_51JRDxdJG6X40aaKwDvHWgbn21OWhaOwDrHuimdAwJS0UhSF3lRquKx4hWEjg7QKAkZqIr6CbsZJQFSxSDeHqP5Nq00JV0Vl0XH'
+
+STRIPE_SECRET_KEY = 'sk_test_51JRDxdJG6X40aaKwxArLS2vr7Q3LQZMZJysGRPTnphDuQ2DDvACEAWYPOhDn9BsfIXlxfP83goPQnoBdcBaxbWep00PGkoPHbm'
+
+# sentry_sdk.init(
+#     dsn="https://d1766c45e55349388fbda860ec310cc2@o1045228.ingest.sentry.io/6020569",
+#     integrations=[DjangoIntegration()],
+
+#     # Set traces_sample_rate to 1.0 to capture 100%
+#     # of transactions for performance monitoring.
+#     # We recommend adjusting this value in production.
+#     # traces_sample_rate=1.0,
+
+#     # If you wish to associate users to errors (assuming you are using
+#     # django.contrib.auth) you may enable sending PII data.
+#     send_default_pii=False
+# )
+
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 INSTALLED_APPS = [
@@ -39,8 +61,11 @@ INSTALLED_APPS = [
     'cloudinary',
     'django_countries',
     'crispy_forms',
+    'crispy_tailwind',
     'taggit',
     'captcha',
+    'debug_toolbar',
+    'django_celery_results',
     # local apps
     'core.apps.CoreConfig',
     'cart.apps.CartConfig',
@@ -51,16 +76,20 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'customers.apps.CustomersConfig',
     'wishlist.apps.WishlistConfig',
+    'newsletter.apps.NewsletterConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'Project.urls'
@@ -80,6 +109,29 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'lomofy_cache',
+    }
+}
+
+
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django_redis.cache.RedisCache",
+#         "LOCATION": "redis://127.0.0.1:6379/1",
+#         "OPTIONS": {
+#             "CLIENT_CLASS": "django_redis.client.DefaultClient"
+#         },
+#         "KEY_PREFIX": "example"
+#     }
+# }
+
+INTERNAL_IPS = [
+    '127.0.0.1',
 ]
 
 SITE_ID = 1
@@ -128,8 +180,11 @@ USE_TZ = True
 # Static files configuration
 STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_TEMPLATE_PACK = "tailwind"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # Mail configrations
 EMAIL_HOST = "smtp.zoho.com"
@@ -150,7 +205,8 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
 # Celery Configurations
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
-CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
+# CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
+CELERY_RESULT_BACKEND = 'django-db'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'

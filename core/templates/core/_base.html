@@ -95,11 +95,11 @@
                                             <li><a href="{% url 'home' %}">Home</a></li>
                                             <li class="hot"><a href="#">Latest</a>
                                                 <ul class="submenu">
-                                                    <li><a href="product_list.html"> Product list</a></li>
-                                                    <li><a href="single-product.html"> Product Details</a></li>
+                                                    <li><a href="{% url 'home' %}"> Product list</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="{% url 'blog:blog_view' %}">Blog</a></li>
+                                            <li><a href="{% url 'about' %}">About</a></li>
                                             <li><a href="{% url 'contact' %}">Contact</a></li>
                                         </ul>
                                     </nav>

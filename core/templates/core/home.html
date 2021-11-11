@@ -32,7 +32,7 @@
                   Collection
                 </h1>
                 <p data-animation="fadeInRight" data-delay=".8s">
-                  Best Cloth Collection By 2020!
+                  Best Cloth Collection By <script>document.write(new Date().getFullYear());</script>!
                 </p>
                 <!-- Hero-btn -->
                 <div
@@ -40,7 +40,7 @@
                   data-animation="fadeInRight"
                   data-delay="1s"
                 >
-                  <a href="industries.html" class="btn hero-btn">Shop Now</a>
+                  <a href="{% url 'home' %}" class="btn hero-btn">Shop Now</a>
                 </div>
               </div>
             </div>
@@ -61,14 +61,14 @@
             <div class="col-xl-5 col-lg-5 col-md-5 col-sm-8">
               <div class="hero__caption">
                 <span data-animation="fadeInRight" data-delay=".4s"
-                  >60% Discount</span
+                  >70% Discount</span
                 >
                 <h1 data-animation="fadeInRight" data-delay=".6s">
                   Winter <br />
                   Collection
                 </h1>
                 <p data-animation="fadeInRight" data-delay=".8s">
-                  Best Cloth Collection By 2020!
+                  Best Cloth Collection By <script>document.write(new Date().getFullYear());</script>!!
                 </p>
                 <!-- Hero-btn -->
                 <div
@@ -200,7 +200,7 @@
                 from Our Shop
               </h2>
               <p>Designers who are interesten creating state ofthe.</p>
-              <a href="#" class="black-btn">Shop Now</a>
+              <a href="{% url 'customer_sign_in' %}" class="black-btn">Shop Now</a>
             </div>
           </div>
         </div>
@@ -221,7 +221,7 @@
           <div class="best-left-cap">
             <h2>Best Collection of This Month</h2>
             <p>Designers who are interesten crea.</p>
-            <a href="#" class="btn shop1-btn">Shop Now</a>
+            <a href="{% url 'customer_sign_in' %}" class="btn shop1-btn">Shop Now</a>
           </div>
           <div class="best-left-img mb-30 d-none d-sm-block">
             <img

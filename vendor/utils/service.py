@@ -1,7 +1,6 @@
 import threading
 
 from django.conf import settings
-from django.contrib import messages
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
@@ -18,7 +17,7 @@ class EmailThread(threading.Thread):
         try:
             self.mail.send()
         except Exception as e:
-            messages.error(request, 'Error sending email: %s' % e)
+            print('Error sending email: %s' % e)
 
 
 def send_welcome_mail(request, user):

@@ -1,10 +1,14 @@
 {% extends 'vendor/_base.html' %} 
 {% load crispy_forms_tags %} 
 {% block content %}
-{% if messages %} 
-  {% for message in messages %}
-  <div class="notification is-success is-toast">{{ message }}</div>
-  {% endfor %} 
+{% if messages.success %} 
+    {% for message in messages %}
+    <div class="notification is-success is-toast">{{ message }}</div>
+    {% endfor %} 
+{% else %}
+    {% for message in messages %}
+    <div class="notification is-danger is-toast">{{ message }}</div>
+    {% endfor %} 
 {% endif %}
 <div class="columns is-multiline is-mobile is-centered">
   <div class="column is-half">

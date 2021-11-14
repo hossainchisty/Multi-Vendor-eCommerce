@@ -1,9 +1,13 @@
+import logging
 import threading
 
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 
 
 class EmailThread(threading.Thread):
@@ -17,7 +21,7 @@ class EmailThread(threading.Thread):
         try:
             self.mail.send()
         except Exception as e:
-            print(f'{e=}')
+            logger.warning(f"Somthing went wrong while sending mail to thread {e}")
 
 
 def send_welcome_mail(request, user):

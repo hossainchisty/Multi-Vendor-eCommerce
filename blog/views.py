@@ -95,6 +95,7 @@ def create_comment_view(request, slug):
 
 
 @customer_required
+@cache_page(60 * 2)
 def blog_search_view(request):
     '''
     This view will search for the blog post with title, slug and category.

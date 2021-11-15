@@ -6,12 +6,12 @@ Contact: hossain.chisty11@gmail.com
 Github: https://github.com/hossainchisty
 """
 
+import os
 from pathlib import Path
 
 import cloudinary
 import cloudinary.api
 import cloudinary.uploader
-import django_heroku
 
 # import sentry_sdk
 # from sentry_sdk.integrations.django import DjangoIntegration
@@ -47,8 +47,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
-
-INSTALLED_APPS = [
+DEFAULT_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -58,15 +57,9 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.humanize',
-    'cloudinary',
-    'django_countries',
-    'crispy_forms',
-    'crispy_tailwind',
-    'taggit',
-    'captcha',
-    'debug_toolbar',
-    'django_celery_results',
-    # local apps
+]
+
+LOCAL_APPS = [
     'core.apps.CoreConfig',
     'cart.apps.CartConfig',
     'order.apps.OrderConfig',
@@ -78,6 +71,19 @@ INSTALLED_APPS = [
     'wishlist.apps.WishlistConfig',
     'newsletter.apps.NewsletterConfig',
 ]
+
+THIRD_PARTY_APPS = [
+    'cloudinary',
+    'django_countries',
+    'crispy_forms',
+    'crispy_tailwind',
+    'taggit',
+    'captcha',
+    'debug_toolbar',
+    'django_celery_results',
+]
+
+INSTALLED_APPS = DEFAULT_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -232,4 +238,6 @@ LOGOUT_REDIRECT_URL = 'customer_sign_in'
 
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+if 'HEROKU' in os.environ:
+    import django_heroku
+    django_heroku.settings(locals())

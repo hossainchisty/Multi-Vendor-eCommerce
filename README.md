@@ -1,9 +1,9 @@
 # Multi vendor e-commerce platform🛒
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-[![Ecommerce Software Tests(CI/CD)](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/testing.yml/badge.svg)](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/testing.yml)
-[![DevSkim](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/devskim-analysis.yml/badge.svg?branch=master)](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/devskim-analysis.yml)
+[![Tests](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/tests.yml)
 [![Coverage](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/coverage.yml/badge.svg)](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/coverage.yml)
+[![DevSkim](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/devskim-analysis.yml/badge.svg?branch=master)](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/devskim-analysis.yml)
 [![CodeQL](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/codeql-analysis.yml)
 [![SL Scan](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/shiftleft-analysis.yml/badge.svg)](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/shiftleft-analysis.yml)
 <a href="https://drawsql.app/backend-/diagrams/multivendor-ecommerce-software">![Lomofy SQL Diagram](https://img.shields.io/badge/Lomofy-Diagram%20-blue)</a>

@@ -10,10 +10,6 @@ from .decorators import customer_required
 from .forms import CustomerSignUpForm, CustomerUpdateForm
 from .utils import service
 
-# from product.models import Product
-# from review.models import Review
-# from vendor.models import Vendor
-
 
 @customer_required
 def customerWishlistAndFollowedStore(request):
@@ -23,14 +19,7 @@ def customerWishlistAndFollowedStore(request):
 
 @customer_required
 def CustomerProfile(request):
-    ''' customer profile .'''
-    '''
-    TODO:
-        1. filter who is the seller of projucts
-    '''
-    # vendor = Vendor.objects.all()
-    # vendor_shop = OrderItem.objects.filter(vendor=vendor)
-    # print(vendor_shop)
+    ''' customer profile '''
 
     order = OrderItem.objects.filter(order__customer=request.user.customer)
 
@@ -42,7 +31,7 @@ def CustomerProfile(request):
     return render(request, 'customer/customer_profile.html', context)
 
 
-@ customer_required
+@customer_required
 def CustomerProfileUpdate(request):
     ''' Update customer profile '''
     if request.method == 'POST':

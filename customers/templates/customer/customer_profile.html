@@ -72,6 +72,7 @@
           <tr class="th">
           {% for item in orders %}
               <th>Order #</th>
+              <th>Status</th>
               <th>Placed On</th>
               <th>Items</th>
               <th>Total</th>
@@ -80,7 +81,8 @@
        
                    
           <tr>
-              <td>{{ item.id }}</td>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ item.order.status }}</td>
               <td>{{ item.order.delivered_date }}</td>
               <td>
               {% if item.product.image %}

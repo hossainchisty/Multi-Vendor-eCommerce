@@ -2,17 +2,17 @@ from django.contrib import messages
 from django.contrib.auth import (
     authenticate, login, update_session_auth_hash, views as auth_views,
 )
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.shortcuts import redirect, render
-from order.models import Order, OrderItem
-from product.models import Product
-from review.models import Review
-from vendor.models import Vendor
+from order.models import OrderItem
 
 from .decorators import customer_required
 from .forms import CustomerSignUpForm, CustomerUpdateForm
 from .utils import service
+
+# from product.models import Product
+# from review.models import Review
+# from vendor.models import Vendor
 
 
 @customer_required

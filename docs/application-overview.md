@@ -76,8 +76,14 @@ The application contains the following models:
 
 Prerequisites:
 
-- Python 3.9.7+
-- Django 3.2.6+
+- Python v3.9.7
+- Docker v20.10.8
+- Django v3.2.6
+- Celery v5.1.2
+- Redis v3.5.3
+- Stripe v2.61.0
+- Sentry-sdk v1.4.3
+- Cloudinary v1.26.0
 
 To set up the app execute the following guide.
 

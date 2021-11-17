@@ -1,5 +1,4 @@
 name: SL Scan
-author: "Hossain Chisty <hossain.chisty11@gmail.com>" 
 
 on:
   push:

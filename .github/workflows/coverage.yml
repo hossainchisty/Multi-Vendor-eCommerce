@@ -1,5 +1,4 @@
 name: Coverage
-author: "Hossain Chisty <hossain.chisty11@gmail.com>" 
 
 on:
   push:

@@ -1,4 +1,5 @@
-name: Coverage 
+name: Coverage
+author: "Hossain Chisty <hossain.chisty11@gmail.com>" 
 
 on:
   push:
@@ -25,3 +26,5 @@ jobs:
       run: |
         coverage run manage.py test
         coverage report
+    - name: Upload coverage
+        uses: codecov/codecov-action@v1

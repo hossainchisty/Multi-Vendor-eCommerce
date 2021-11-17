@@ -1,9 +1,4 @@
 name: Tests
-author: "Hossain Chisty <hossain.chisty11@gmail.com>" 
-<<<<<<< HEAD
-
-=======
->>>>>>> c9bc7e2d7e9bfb4c442202501e325861f9c61d24
 
 on:
   push:

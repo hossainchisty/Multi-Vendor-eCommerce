@@ -9,7 +9,6 @@
 <a href="https://drawsql.app/backend-/diagrams/multivendor-ecommerce-software">![Lomofy SQL Diagram](https://img.shields.io/badge/Lomofy-Diagram%20-blue)</a>
 
 A scalable advance multi vendor ecommerce software application with RBAC feature.
-#### Build with ❤️ By `Hossain Chisty`
 
 ## The Lomofy Diagram
 
@@ -72,4 +71,4 @@ If you would like to have my help with your team and product, feel free to conta
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+This project is licensed under the terms of the [MIT](https://choosealicense.com/licenses/mit/) license.

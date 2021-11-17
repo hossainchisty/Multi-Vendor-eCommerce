@@ -1,5 +1,5 @@
 name: Linters
-author: "Hossain Chisty <hossain.chisty11@gmail.com>" 
+
 
 on:
   pull_request:

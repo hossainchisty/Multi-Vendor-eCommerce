@@ -82,10 +82,16 @@ class OrderItem(models.Model):
 
     @property
     def get_delivery_date(self):
+        '''
+        This method is used to get the delivery date of the item.
+        '''
         return self.order.delivered_date
 
     @property
     def get_delivery_status(self):
+        '''
+        This method is used to get the delivery status of the item.
+        '''
         return self.order.status
 
     def __str__(self):

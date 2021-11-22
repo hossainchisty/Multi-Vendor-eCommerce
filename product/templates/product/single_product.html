@@ -1,6 +1,5 @@
-
 {% extends 'core/_base.html' %}
-{% block title %}Product Details {% endblock %}
+{% block title %}{{ products.title }} {% endblock %}
 {% load static %}
 {% block body %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
@@ -109,6 +108,30 @@
         </div>
       </div>
   </main>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mb-12">
+    <article>
+        <h2 class="text-2xl font-extrabold text-gray-900">Recently Viewed</h2>
+        <section class="mt-6 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-8">
+        {% for product in recently_viewed_products %}
+            {% if product.image %}
+            <article class="relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-3xl transition duration-300 ease-in-out" style="background-image: url('{{ product.image.url }}');">
+            {% else %}
+            <article class="relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-3xl transition duration-300 ease-in-out" style="background-image: url('{{ product.url }}');">
+            {% endif %}
+                <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out"></div>
+                <div class="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
+                    <h3 class="text-center">
+                        <a class="text-white text-2xl font-bold text-center" href="{% url 'product_detail'  product.category.slug product.slug product.id %}">
+                            <span class="absolute inset-0"></span>
+                            {{ product.title | title }}
+                        </a>
+                    </h3>
+                </div>
+            </article>
+        {% endfor %}
+        </section>
+    </article>
+</section>
   <!--================End Single Product Area =================-->
     {% block footer %}
         {% include 'core/footer.html' %}

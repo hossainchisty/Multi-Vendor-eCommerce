@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="product-caption">
-            <h4><a href="{% url 'product_detail'  product.category.slug product.slug %}">
+            <h4><a href="{% url 'product_detail'  product.category.slug product.slug product.id %}">
                 {{product.title|title}}</a></h4>
             <div class="price">
                 <ul>
@@ -34,7 +34,7 @@
                 </ul>
             </div>
             <br>
-            <a href="{% url 'product_detail'  product.category.slug product.slug %}" class="genric-btn primary">See details</a>
+            <a href="{% url 'product_detail'  product.category.slug product.slug product.id %}" class="genric-btn primary">See details</a>
             {% if product.wishlist_exist %}
             <a href="{% url 'add_to_wishlist' product.id %}" class="genric-btn danger-border">Remove from wishlist</a>
             {% else %}

@@ -207,7 +207,6 @@
             new Autocomplete('#autocomplete', {
 
                 search: input => {
-                    console.log(input)
                     const url = `/search?query=${input}`
                     return new Promise(resolve => {
                         fetch(url)

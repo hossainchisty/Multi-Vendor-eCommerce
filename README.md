@@ -10,6 +10,8 @@
 
 A scalable advance multi vendor ecommerce software application with RBAC feature.
 
+###### Don't forget to leave a [star ⭐!](https://github.com/hossainchisty/Multi-Vendor-eCommerce/stargazers)
+
 ## The Lomofy Diagram
 
 --> *Preview :*

@@ -10,7 +10,6 @@
 
 A scalable advance multi vendor ecommerce software application with RBAC feature.
 
-###### Don't forget to leave a [star ⭐!](https://github.com/hossainchisty/Multi-Vendor-eCommerce/stargazers)
 
 ## The Lomofy Diagram
 
@@ -45,6 +44,7 @@ The application is multivendor eCommerce platform with Role-based access control
 - [🌐 Deployment](docs/deployment.md)
 - [📚 Additional Resources](docs/additional-resources.md)
 
+<!-- Get in touch - Start -->
 ## Get in touch
 
 <a class="header-badge" target="_blank" href="https://www.linkedin.com/in/hossainchisty/">
@@ -70,7 +70,12 @@ The application is multivendor eCommerce platform with Role-based access control
 Author:
 <a href="https://www.linkedin.com/in/hossainchisty/" target="_blank">Hossain Chisty</a><br>
 If you would like to have my help with your team and product, feel free to contact me. 🤓
+<!-- Get in touch - End -->
 
-## License
+## 🛡️ License
 
-This project is licensed under the terms of the [MIT](https://choosealicense.com/licenses/mit/) license.
+ Multi vendor e-commerce platform is licensed under the MIT License - see the [`LICENSE`](LICENSE) file for details.
+ 
+ ## 🙏 Support
+
+This project needs a ⭐️ from you. Don't forget to leave a star ⭐️

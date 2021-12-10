@@ -41,6 +41,17 @@ The application is multivendor eCommerce platform with Role-based access control
 - [🌐 Deployment](docs/deployment.md)
 - [📚 Additional Resources](docs/additional-resources.md)
 
+## 🛡️ License
+
+ Multi vendor e-commerce platform is licensed under the MIT License - see the [`LICENSE`](LICENSE) file for details.
+ 
+ ## 🙏 Support
+
+This project needs a ⭐️ from you. Don't forget to leave a star ⭐️
+
+## ↳ Stargazers
+[![Stargazers repo roster for @hossainchisty/Multi-Vendor-eCommerce](https://reporoster.com/stars/dark/notext/hossainchisty/Multi-Vendor-eCommerce)](https://github.com/hossainchisty/Multi-Vendor-eCommerce/stargazers)
+
 <!-- Get in touch - Start -->
 ## Get in touch
 
@@ -68,16 +79,6 @@ Author:
 <a href="https://www.linkedin.com/in/hossainchisty/" target="_blank">Hossain Chisty</a><br>
 If you would like to have my help with your team and product, feel free to contact me. 🤓
 <!-- Get in touch - End -->
-
-## 🛡️ License
-
- Multi vendor e-commerce platform is licensed under the MIT License - see the [`LICENSE`](LICENSE) file for details.
- 
- ## 🙏 Support
-
-This project needs a ⭐️ from you. Don't forget to leave a star ⭐️
-
-## ↳ Stargazers
-[![Stargazers repo roster for @hossainchisty/Multi-Vendor-eCommerce](https://reporoster.com/stars/dark/notext/hossainchisty/Multi-Vendor-eCommerce)](https://github.com/hossainchisty/Multi-Vendor-eCommerce/stargazers)
-
 <p align="center"><a href="https://github.com/hossainchisty/Multi-Vendor-eCommerce#"><img src="http://randojs.com/images/backToTopButton.png" alt="Back to top" height="29"/></a></p>
+
+

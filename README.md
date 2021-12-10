@@ -79,3 +79,6 @@ If you would like to have my help with your team and product, feel free to conta
  ## 🙏 Support
 
 This project needs a ⭐️ from you. Don't forget to leave a star ⭐️
+
+## ↳ Stargazers
+[![Stargazers repo roster for @hossainchisty/Multi-Vendor-eCommerce](https://reporoster.com/stars/dark/notext/hossainchisty/Multi-Vendor-eCommerce)](https://github.com/hossainchisty/Multi-Vendor-eCommerce/stargazers)

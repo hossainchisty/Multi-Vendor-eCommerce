@@ -83,4 +83,4 @@ This project needs a ⭐️ from you. Don't forget to leave a star ⭐️
 ## ↳ Stargazers
 [![Stargazers repo roster for @hossainchisty/Multi-Vendor-eCommerce](https://reporoster.com/stars/dark/notext/hossainchisty/Multi-Vendor-eCommerce)](https://github.com/hossainchisty/Multi-Vendor-eCommerce/stargazers)
 
-<p align="center"><a href="https://github.com/hossainchisty/Multi-Vendor-eCommerc#"><img src="http://randojs.com/images/backToTopButton.png" alt="Back to top" height="29"/></a></p>
+<p align="center"><a href="https://github.com/hossainchisty/Multi-Vendor-eCommerce#"><img src="http://randojs.com/images/backToTopButton.png" alt="Back to top" height="29"/></a></p>

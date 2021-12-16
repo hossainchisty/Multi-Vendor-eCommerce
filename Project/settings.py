@@ -25,23 +25,23 @@ cloudinary.config(cloud_name="hossainchisty", api_key="958916513788356",
 SECRET_KEY = 'django-insecure-aw5k1oe@$nupmyzx+u1$+)a#@*b8ltdkp+q=&pg5q@=fl&8ims'
 
 
-STRIPE_PUB_KEY = 'pk_test_51JRDxdJG6X40aaKwDvHWgbn21OWhaOwDrHuimdAwJS0UhSF3lRquKx4hWEjg7QKAkZqIr6CbsZJQFSxSDeHqP5Nq00JV0Vl0XH'
+# STRIPE_PUB_KEY = 'pk_test_51JRDxdJG6X40aaKwDvHWgbn21OWhaOwDrHuimdAwJS0UhSF3lRquKx4hWEjg7QKAkZqIr6CbsZJQFSxSDeHqP5Nq00JV0Vl0XH'
 
-STRIPE_SECRET_KEY = 'sk_test_51JRDxdJG6X40aaKwxArLS2vr7Q3LQZMZJysGRPTnphDuQ2DDvACEAWYPOhDn9BsfIXlxfP83goPQnoBdcBaxbWep00PGkoPHbm'
+# STRIPE_SECRET_KEY = 'sk_test_51JRDxdJG6X40aaKwxArLS2vr7Q3LQZMZJysGRPTnphDuQ2DDvACEAWYPOhDn9BsfIXlxfP83goPQnoBdcBaxbWep00PGkoPHbm'
 
-sentry_sdk.init(
-    dsn="https://d1766c45e55349388fbda860ec310cc2@o1045228.ingest.sentry.io/6020569",
-    integrations=[DjangoIntegration()],
+# sentry_sdk.init(
+#     dsn="https://d1766c45e55349388fbda860ec310cc2@o1045228.ingest.sentry.io/6020569",
+#     integrations=[DjangoIntegration()],
 
-    # Set traces_sample_rate to 1.0 to capture 100%
-    # of transactions for performance monitoring.
-    # We recommend adjusting this value in production.
-    # traces_sample_rate=1.0,
+#     # Set traces_sample_rate to 1.0 to capture 100%
+#     # of transactions for performance monitoring.
+#     # We recommend adjusting this value in production.
+#     # traces_sample_rate=1.0,
 
-    # If you wish to associate users to errors (assuming you are using
-    # django.contrib.auth) you may enable sending PII data.
-    send_default_pii=False
-)
+#     # If you wish to associate users to errors (assuming you are using
+#     # django.contrib.auth) you may enable sending PII data.
+#     send_default_pii=False
+# )
 
 DEBUG = True
 

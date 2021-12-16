@@ -85,3 +85,7 @@ core/management/commands/_private.py
 config/nginx.conf
 Project/secret_settings.py
 vendor/test/test_vendor_urls.py
+chromedriver.exe
+tests.py
+docker-compose.yml
+db.sqlite3

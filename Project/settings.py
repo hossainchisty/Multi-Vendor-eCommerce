@@ -45,7 +45,7 @@ STRIPE_SECRET_KEY = 'sk_test_51JRDxdJG6X40aaKwxArLS2vr7Q3LQZMZJysGRPTnphDuQ2DDvA
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'multi-vendor-ecommerce-site.herokuapp.com']
 
 DEFAULT_APPS = [
     'django.contrib.admin',

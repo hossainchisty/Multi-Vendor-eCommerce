@@ -43,7 +43,7 @@ SECRET_KEY = 'django-insecure-aw5k1oe@$nupmyzx+u1$+)a#@*b8ltdkp+q=&pg5q@=fl&8ims
 #     send_default_pii=False
 # )
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'multi-vendor-ecommerce-site.herokuapp.com']
 

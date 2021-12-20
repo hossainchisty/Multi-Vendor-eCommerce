@@ -1,9 +1,5 @@
 # ⚙️ Project Configuration
 
-The application has been bootstrapped using `django-admin startproject` for simplicity reasons. It allows us to create applications quickly without dealing with a complex tooling setup such as bundling, transpiling etc.
-
-You should always configure and use the following tools:
-
 #### RBAC
 
 Role-based access control (RBAC) is a policy-neutral access-control mechanism defined around roles and privileges.

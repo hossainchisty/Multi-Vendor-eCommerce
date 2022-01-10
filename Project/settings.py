@@ -12,40 +12,43 @@ from pathlib import Path
 import cloudinary
 import cloudinary.api
 import cloudinary.uploader
+import sentry_sdk
+from dotenv import load_dotenv
+from sentry_sdk.integrations.django import DjangoIntegration
 
-# import sentry_sdk
-# from sentry_sdk.integrations.django import DjangoIntegration
+load_dotenv()  # take environment variables from .env.
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # cloudinary configration
-cloudinary.config(cloud_name="hossainchisty", api_key="958916513788356",
-                  api_secret="2BaQjUoM5jHa3K6VVpbaSs_icBQ")
+cloudinary.config(cloud_name=os.getenv('CLOUD_NAME'), api_key=os.getenv('API_KEY'),
+                  api_secret=os.getenv('API_SECRET'))
 
-SECRET_KEY = 'django-insecure-aw5k1oe@$nupmyzx+u1$+)a#@*b8ltdkp+q=&pg5q@=fl&8ims'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 
-# STRIPE_PUB_KEY = 'pk_test_51JRDxdJG6X40aaKwDvHWgbn21OWhaOwDrHuimdAwJS0UhSF3lRquKx4hWEjg7QKAkZqIr6CbsZJQFSxSDeHqP5Nq00JV0Vl0XH'
+STRIPE_PUB_KEY = os.getenv('STRIPE_PUB_KEY')
 
-# STRIPE_SECRET_KEY = 'sk_test_51JRDxdJG6X40aaKwxArLS2vr7Q3LQZMZJysGRPTnphDuQ2DDvACEAWYPOhDn9BsfIXlxfP83goPQnoBdcBaxbWep00PGkoPHbm'
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 
-# sentry_sdk.init(
-#     dsn="https://d1766c45e55349388fbda860ec310cc2@o1045228.ingest.sentry.io/6020569",
-#     integrations=[DjangoIntegration()],
+sentry_sdk.init(
+    dsn=os.getenv('DNS'),
+    integrations=[DjangoIntegration()],
 
-#     # Set traces_sample_rate to 1.0 to capture 100%
-#     # of transactions for performance monitoring.
-#     # We recommend adjusting this value in production.
-#     # traces_sample_rate=1.0,
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    # traces_sample_rate=1.0,
 
-#     # If you wish to associate users to errors (assuming you are using
-#     # django.contrib.auth) you may enable sending PII data.
-#     send_default_pii=False
-# )
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=False
+)
 
-DEBUG = False
+DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'multi-vendor-ecommerce-site.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', os.getenv('PIP')]
 
 DEFAULT_APPS = [
     'django.contrib.admin',
@@ -189,7 +192,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Dhaka'
+TIME_ZONE = os.getenv('TIME_ZONE')
 
 USE_I18N = True
 
@@ -208,16 +211,16 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Mail configrations
-EMAIL_HOST = "smtp.zoho.com"
-EMAIL_PORT = 465
-EMAIL_HOST_USER = "hossain.chisty@zohomail.com"
-EMAIL_HOST_PASSWORD = "#2#3B399TiU@aBC"
-EMAIL_USE_SSL = True
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL')
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 # Google reCAPTCHA
-RECAPTCHA_PUBLIC_KEY = '6LdDdJYcAAAAAF8MaL1PGHRCnkoSGsNuDaQ1bCXD'
-RECAPTCHA_PRIVATE_KEY = '6LdDdJYcAAAAAEpnhcFoqjVfLmTvTcFU_EiSaD6z'
+RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')
 
 # Session configuration
 CART_SESSION_ID = 'cart'
@@ -231,7 +234,7 @@ CELERY_RESULT_BACKEND = 'django-db'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Asia/Dhaka'
+CELERY_TIMEZONE = os.getenv('TIME_ZONE')
 
 LOGIN_URL = 'customer_sign_in'
 LOGIN_REDIRECT_URL = '/'

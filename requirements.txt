@@ -4,7 +4,7 @@ async-generator==1.10
 attrs==21.2.0
 autopep8==1.5.7
 billiard==3.6.4.0
-celery==5.1.2
+celery==5.2.2
 certifi==2021.5.30
 cffi==1.15.0
 charset-normalizer==2.0.7

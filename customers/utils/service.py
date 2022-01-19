@@ -38,5 +38,5 @@ def send_welcome_mail(request, user):
         to=[request.user.customer.email],
     )
     mail.content_subtype = "HTML"
-    mail.send()
+    EmailThread(mail).start()
     return None

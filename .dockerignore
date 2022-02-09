@@ -1,6 +1,5 @@
 # project build medadata that can't be used in docker
 env
-.circleci
 .github
 img
 vscode

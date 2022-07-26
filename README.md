@@ -1,4 +1,4 @@
-# Multi vendor e-commerce platform🛒
+# Multi vendor e-commerce platform
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 [![Tests](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/tests.yml)

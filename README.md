@@ -27,6 +27,42 @@ You can see clearly the diagram at :&nbsp; <a href="https://drawsql.app/backend-
 
 The application is multivendor eCommerce platform with Role-based access control (RBAC) that empowers multiple vendors to sell their products from one storefront. Multivendor store gives shoppers a huge catalog to choose from and provides sellers with a bigger base of ready-to-buy customers.
 
+## 📸 Screenshot
+<details>
+ <summary>
+    🔎 View
+ </summary>
+
+ ### 💻 Home
+![home](https://user-images.githubusercontent.com/62835101/189314195-5f009fa6-cbb2-4b7e-9f5e-23173e945ac9.png)
+
+### 🧾 Product Details
+![product-details](https://user-images.githubusercontent.com/62835101/189315781-f94d18a8-ed21-4e5b-855c-b55ad1074814.png)
+
+### ⌛ Recently Viewd
+![recently-viewd](https://user-images.githubusercontent.com/62835101/189316142-3dbb4d4d-03c7-4e6a-83db-04ed30a61374.png)
+
+ ### 💝 Wishlist
+ ![wishlist](https://user-images.githubusercontent.com/62835101/189314576-539a13e5-933b-44f6-a999-febc1defa4bc.png)
+ 
+ ### 👨🏻‍💻 Customer Profile
+ ![customer-profile](https://user-images.githubusercontent.com/62835101/189316424-9b196c67-3152-4598-8d1f-a6d7a8c584db.png)
+
+### 🛒 Order Details
+![order-details](https://user-images.githubusercontent.com/62835101/189316720-10eaa9d0-f153-443d-a42f-77fb0f0111e5.png)
+
+### 💻 Vendor
+![vendor](https://user-images.githubusercontent.com/62835101/189316849-084753d2-4f33-4edd-ae82-79ced8142990.png)
+
+### ✅ Vendor Sign up
+![sign-up](https://user-images.githubusercontent.com/62835101/189317399-a4121877-b798-4948-b259-ddf580fb6418.png)
+
+### ✅ Vendor Sign In
+![sign-in](https://user-images.githubusercontent.com/62835101/189317481-3fa13138-9d45-43a8-bcef-209849a4c41c.png)
+
+</details>
+ 
+ 
 ## Table Of Contents:
 
 - [💻 Application Overview](docs/application-overview.md)

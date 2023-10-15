@@ -75,13 +75,6 @@ The application is multivendor eCommerce platform with Role-based access control
 ## 🛡️ License
 
  Multi vendor e-commerce platform is licensed under the MIT License - see the [`LICENSE`](LICENSE) file for details.
- 
- ## 🙏 Support
-
-This project needs a ⭐️ from you. Don't forget to leave a star ⭐️
-
-## ↳ Stargazers
-[![Stargazers repo roster for @hossainchisty/Multi-Vendor-eCommerce](https://reporoster.com/stars/dark/notext/hossainchisty/Multi-Vendor-eCommerce)](https://github.com/hossainchisty/Multi-Vendor-eCommerce/stargazers)
 
 <!-- Get in touch - Start -->
 ## Get in touch

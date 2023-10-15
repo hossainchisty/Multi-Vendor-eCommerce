@@ -1,11 +1,6 @@
 # Multi vendor e-commerce platform
 
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-[![Tests](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/tests.yml)
-[![Coverage](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/coverage.yml/badge.svg?branch=master)](https://github.com/hossainchisty/Multi-Vendor-eCommerce/actions/workflows/coverage.yml)
-<a href="https://drawsql.app/backend-/diagrams/multivendor-ecommerce-software">![Lomofy SQL Diagram](https://img.shields.io/badge/Lomofy-Diagram%20-blue)</a>
-
-A scalable advance multi vendor ecommerce software application with RBAC feature.
+A scalable advanced multi-vendor e-commerce software application with Role-Based Access Control (RBAC) feature is a sophisticated platform designed to cater to the needs of multiple vendors and users within the e-commerce ecosystem
 
 
 ## The Lomofy Diagram

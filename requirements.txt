@@ -55,7 +55,7 @@ stripe==2.61.0
 toml==0.10.2
 trio==0.19.0
 trio-websocket==0.9.2
-urllib3==1.26.6
+urllib3==1.26.18
 uvicorn==0.15.0
 vine==5.0.0
 wcwidth==0.2.5

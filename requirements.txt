@@ -5,7 +5,7 @@ attrs==21.2.0
 autopep8==1.5.7
 billiard==3.6.4.0
 celery==5.1.2
-certifi==2021.5.30
+certifi==2023.7.22
 cffi==1.15.0
 charset-normalizer==2.0.7
 click==7.1.2
